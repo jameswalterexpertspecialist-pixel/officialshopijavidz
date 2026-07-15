@@ -1,6 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Mail, MapPin, Clock, Check, X, MessageCircle, ArrowRight, Instagram, Facebook, Twitter, Youtube, Send } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { Mail, MapPin, Clock, Check, X, MessageCircle, ArrowRight, Instagram, Facebook, Twitter, Youtube, Send, AlertCircle, Loader2 } from 'lucide-react';
 import { AGENCY_EMAIL, FOUNDER_WHATSAPP, AGENCY_ADDRESS, AGENCY_LAT, AGENCY_LNG, SERVICES, WORK_WITH_OPTIONS, SOCIAL_LINKS } from '../lib/data';
 
 const socialIcons: Record<string, React.ComponentType<{ size?: number }>> = {
@@ -54,13 +53,45 @@ export default function ContactPage() {
     setError(null);
     const services = [...selectedServices];
     if (customService.trim()) services.push(customService.trim());
-    const { error: err } = await supabase.from('sj_contacts').insert({
-      name: form.name, email: form.email, company: form.company, phone: form.phone,
-      services, budget: form.budget, message: form.message, consultation_code: consultationCode,
-    });
-    setSubmitting(false);
-    if (err) setError(err.message);
-    else setSent(true);
+
+    const payload = {
+      name: form.name,
+      email: form.email,
+      company: form.company,
+      phone: form.phone,
+      services,
+      budget: form.budget,
+      message: form.message,
+      workWith: form.workWith,
+      consultationCode,
+    };
+
+    try {
+      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/contact-notify`;
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || `Request failed (${response.status})`);
+      }
+
+      const data = await response.json();
+      if (!data.success) {
+        throw new Error(data.error || 'Something went wrong. Please try again.');
+      }
+      setSent(true);
+    } catch (err: any) {
+      setError(err.message || 'Failed to send message. Please try again or email us directly.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (sent) {
@@ -194,10 +225,19 @@ export default function ContactPage() {
                 </div>
               )}
 
-              {error && <p className="rounded-xl bg-coral-50 p-3 text-sm text-red-400">{error}</p>}
+              {error && (
+                <div className="flex items-start gap-2 rounded-xl bg-red-500/10 p-3 text-sm text-red-400 ring-1 ring-red-500/20">
+                  <AlertCircle size={16} className="mt-0.5 shrink-0" />
+                  <span>{error}</span>
+                </div>
+              )}
 
               <button type="submit" disabled={submitting} className="btn-amber w-full">
-                {submitting ? 'Sending...' : <>Send Message <ArrowRight size={16} /></>}
+                {submitting ? (
+                  <><Loader2 size={16} className="animate-spin" /> Sending...</>
+                ) : (
+                  <>Send Message <ArrowRight size={16} /></>
+                )}
               </button>
               <p className="text-center text-xs text-carbon-500">We reply within 24 hours. Consultation is free.</p>
             </form>

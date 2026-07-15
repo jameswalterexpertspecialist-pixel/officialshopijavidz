@@ -73,14 +73,14 @@ export default function HomePage() {
                 Building Powerful Brands<br />
                 <span className="amber-text">That Deliver Real Results</span>
               </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-lg text-white/70 leading-relaxed">
-                {SLIDES[slide].title} <span className="text-amber-500">—</span> {SLIDES[slide].sub}
+              <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80 leading-relaxed font-medium">
+                {SLIDES[slide].title} <span className="text-accent-400">—</span> {SLIDES[slide].sub}
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
                 <button onClick={() => navigate('/contact')} className="btn-amber">Book Free Strategy Call <ArrowRight size={16} /></button>
                 <button onClick={() => navigate('/portfolio')} className="btn-ghost">View Portfolio</button>
               </div>
-              <p className="mt-8 text-sm font-medium text-amber-500 tracking-widest">What Matters Is Results</p>
+              <p className="mt-8 text-sm font-bold text-accent-400 tracking-[0.3em] uppercase">What Matters Is Results</p>
             </div>
           </div>
         </div>

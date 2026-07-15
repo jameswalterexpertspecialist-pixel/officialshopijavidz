@@ -16,7 +16,7 @@ const links = [
 
 export default function Navbar() {
   const { route, navigate } = useHashRoute();
-  const { theme, accent, toggle, toggleAccent } = useTheme();
+  const { theme, accent, toggle, setAccent } = useTheme();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [colorOpen, setColorOpen] = useState(false);
@@ -65,7 +65,15 @@ export default function Navbar() {
                 <div className="absolute right-0 top-11 z-50 w-44 rounded-xl bg-carbon-900 p-2 ring-1 ring-white/10 shadow-lift animate-fade-in">
                   <p className="px-2 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-carbon-500">Colour scheme</p>
                   <button
-                    onClick={() => { if (accent !== 'blue') toggleAccent(); setColorOpen(false); }}
+                    onClick={() => { if (accent !== 'green') setAccent('green'); setColorOpen(false); }}
+                    className={`flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-sm transition ${accent === 'green' ? 'bg-white/5 text-white' : 'text-carbon-400 hover:text-white'}`}
+                  >
+                    <span className="h-4 w-4 rounded-full bg-emerald-500 ring-1 ring-white/20" />
+                    <span>Green</span>
+                    {accent === 'green' && <span className="ml-auto text-xs text-emerald-400">●</span>}
+                  </button>
+                  <button
+                    onClick={() => { if (accent !== 'blue') setAccent('blue'); setColorOpen(false); }}
                     className={`flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-sm transition ${accent === 'blue' ? 'bg-white/5 text-white' : 'text-carbon-400 hover:text-white'}`}
                   >
                     <span className="h-4 w-4 rounded-full bg-blue-500 ring-1 ring-white/20" />
@@ -73,7 +81,7 @@ export default function Navbar() {
                     {accent === 'blue' && <span className="ml-auto text-xs text-blue-400">●</span>}
                   </button>
                   <button
-                    onClick={() => { if (accent !== 'gold') toggleAccent(); setColorOpen(false); }}
+                    onClick={() => { if (accent !== 'gold') setAccent('gold'); setColorOpen(false); }}
                     className={`flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-sm transition ${accent === 'gold' ? 'bg-white/5 text-white' : 'text-carbon-400 hover:text-white'}`}
                   >
                     <span className="h-4 w-4 rounded-full bg-amber-500 ring-1 ring-white/20" />

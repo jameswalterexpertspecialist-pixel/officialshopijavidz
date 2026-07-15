@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 
 type Theme = 'dark' | 'light';
-type Accent = 'blue' | 'gold';
+type Accent = 'green' | 'blue' | 'gold';
 
 type ThemeCtx = {
   theme: Theme;
@@ -16,7 +16,7 @@ const Ctx = createContext<ThemeCtx | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('dark');
-  const [accent, setAccentState] = useState<Accent>('blue');
+  const [accent, setAccentState] = useState<Accent>('green');
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('sj-theme') as Theme | null;
@@ -40,7 +40,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const toggle = () => setThemeState((t) => (t === 'dark' ? 'light' : 'dark'));
   const setTheme = (t: Theme) => setThemeState(t);
   const setAccent = (a: Accent) => setAccentState(a);
-  const toggleAccent = () => setAccentState((a) => (a === 'blue' ? 'gold' : 'blue'));
+  const toggleAccent = () => setAccentState((a) => a === 'green' ? 'blue' : a === 'blue' ? 'gold' : 'green');
 
   return <Ctx.Provider value={{ theme, accent, toggle, setTheme, setAccent, toggleAccent }}>{children}</Ctx.Provider>;
 }
