@@ -22,7 +22,7 @@ export default function Footer() {
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <button onClick={() => navigate('/portfolio')} className="flex items-center gap-3">
-              <img src="/images/WhatsApp_Image_2026-05-18_at_11.45.20_AM.jpeg" alt="" className="h-12 w-12 rounded-full object-cover ring-1 ring-amber-500/40" />
+              <img src="/images/shopi.jpeg" alt="" className="h-12 w-12 rounded-full object-cover ring-1 ring-white/20" />
               <div>
                 <span className="block font-serif text-xl font-semibold tracking-widest text-white">SHOPIJAVID</span>
                 <span className="block text-xs text-amber-500 tracking-widest">WHAT MATTERS IS RESULTS</span>
@@ -35,7 +35,7 @@ export default function Footer() {
               {SOCIAL_LINKS.map((s) => {
                 const Icon = socialIcons[s.icon] || Youtube;
                 return (
-                  <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" title={s.name} className="flex h-9 w-9 items-center justify-center rounded-full bg-carbon-900 text-carbon-400 ring-1 ring-white/10 transition hover:bg-amber-500 hover:text-carbon-950 hover:ring-amber-500 hover:scale-110">
+                  <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" title={s.name} className="flex h-9 w-9 items-center justify-center rounded-full bg-carbon-900 text-carbon-400 ring-1 ring-white/10 transition hover:bg-accent-500 hover:text-white hover:ring-accent-500 hover:scale-110">
                     <Icon size={15} />
                   </a>
                 );
@@ -72,7 +72,7 @@ export default function Footer() {
             ) : (
               <form onSubmit={(e) => { e.preventDefault(); if (email) setSubscribed(true); }} className="mt-4 flex gap-2">
                 <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your email" className="input-dark flex-1 text-xs" />
-                <button type="submit" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-carbon-950 hover:bg-amber-400 transition"><Send size={15} /></button>
+                <button type="submit" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent-500 text-white hover:bg-accent-400 transition"><Send size={15} /></button>
               </form>
             )}
           </div>

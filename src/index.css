@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Accent colour schemes ─────────────────────────────────────────────── */
+/* Default: Blue (logo colours) */
+:root {
+  --accent-50:  #eff6ff;
+  --accent-100: #dbeafe;
+  --accent-200: #bfdbfe;
+  --accent-300: #93c5fd;
+  --accent-400: #60a5fa;
+  --accent-500: #3b82f6;
+  --accent-600: #2563eb;
+  --accent-700: #1d4ed8;
+  --accent-800: #1e40af;
+  --accent-900: #1e3a8a;
+  --accent-glow: rgba(59, 130, 246, 0.40);
+  --accent-glow-ring: rgba(59, 130, 246, 0.35);
+  --accent-grid: rgba(59, 130, 246, 0.05);
+  /* Cyan highlight used in logo gradient tip */
+  --accent-hi: #0ea5e9;
+}
+
+/* Gold / Amber scheme */
+body.accent-gold {
+  --accent-50:  #fffbeb;
+  --accent-100: #fef3c7;
+  --accent-200: #fde68a;
+  --accent-300: #fcd34d;
+  --accent-400: #fbbf24;
+  --accent-500: #f59e0b;
+  --accent-600: #d97706;
+  --accent-700: #b45309;
+  --accent-800: #92400e;
+  --accent-900: #78350f;
+  --accent-glow: rgba(245, 158, 11, 0.40);
+  --accent-glow-ring: rgba(245, 158, 11, 0.35);
+  --accent-grid: rgba(245, 158, 11, 0.05);
+  --accent-hi: #fbbf24;
+}
+
 @layer base {
   html { scroll-behavior: smooth; }
   body {
@@ -9,70 +47,145 @@
     font-feature-settings: "ss01";
   }
   body.theme-light { @apply bg-stone-50 text-carbon-900; }
-  body.theme-dark { @apply bg-carbon-950 text-white; }
-  ::selection { @apply bg-amber-500/30 text-amber-300; }
+  body.theme-dark  { @apply bg-carbon-950 text-white; }
+  ::selection { background: var(--accent-500); color: #fff; opacity: 0.3; }
 }
 
 @layer components {
   .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
 
+  /* ── Buttons ── */
   .btn { @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed; }
-  .btn-amber { @apply btn bg-amber-500 text-carbon-950 hover:bg-amber-400 shadow-amber hover:-translate-y-0.5 hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm; }
-  .btn-outline-amber { @apply btn border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-carbon-950 hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm; }
+
+  /* accent buttons — driven by CSS vars */
+  .btn-amber {
+    @apply btn hover:-translate-y-0.5 hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm;
+    background-color: var(--accent-500);
+    color: #fff;
+    box-shadow: 0 0 40px -8px var(--accent-glow);
+  }
+  .btn-amber:hover { background-color: var(--accent-400); }
+
+  .btn-outline-amber {
+    @apply btn hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm;
+    border: 1px solid var(--accent-500);
+    color: var(--accent-500);
+  }
+  .btn-outline-amber:hover { background-color: var(--accent-500); color: #fff; }
+
+  /* Gold variant keeps amber tokens for cases where we truly want amber */
   .btn-forest { @apply btn bg-forest-600 text-white hover:bg-forest-500 shadow-forest hover:-translate-y-0.5 hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm; }
-  .btn-white { @apply btn bg-white text-carbon-900 hover:bg-stone-100 shadow-card hover:-translate-y-0.5 hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm; }
-  .btn-ghost { @apply btn border border-white/20 text-white hover:border-amber-500 hover:text-amber-500 hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm; }
+  .btn-white  { @apply btn bg-white text-carbon-900 hover:bg-stone-100 shadow-card hover:-translate-y-0.5 hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm; }
+  .btn-ghost  {
+    @apply btn border border-white/20 text-white hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .btn-ghost:hover { border-color: var(--accent-500); color: var(--accent-500); }
   .btn-sm { @apply px-5 py-2.5 text-xs; }
 
-  .card-dark { @apply rounded-2xl bg-carbon-900 ring-1 ring-white/10; }
-  .card-light { @apply rounded-2xl bg-white ring-1 ring-carbon-200/60 shadow-card; }
+  /* ── Cards ── */
+  .card-dark   { @apply rounded-2xl bg-carbon-900 ring-1 ring-white/10; }
+  .card-light  { @apply rounded-2xl bg-white ring-1 ring-carbon-200/60 shadow-card; }
   .card-forest { @apply rounded-2xl bg-forest-950 ring-1 ring-forest-700/40; }
 
-  .input-dark { @apply w-full rounded-xl border-0 bg-carbon-800 px-4 py-3.5 text-sm text-white ring-1 ring-white/10 placeholder:text-carbon-400 focus:ring-2 focus:ring-amber-500 transition outline-none; }
+  /* ── Inputs ── */
+  .input-dark  { @apply w-full rounded-xl border-0 bg-carbon-800 px-4 py-3.5 text-sm text-white ring-1 ring-white/10 placeholder:text-carbon-400 transition outline-none; }
+  .input-dark:focus { outline: none; box-shadow: 0 0 0 2px var(--accent-500); }
   .input-light { @apply w-full rounded-xl border-0 bg-stone-100 px-4 py-3.5 text-sm text-carbon-900 ring-1 ring-carbon-200 placeholder:text-carbon-400 focus:ring-2 focus:ring-forest-500 transition outline-none; }
-  .label { @apply block text-xs font-semibold uppercase tracking-widest text-carbon-400 mb-2; }
+  .label       { @apply block text-xs font-semibold uppercase tracking-widest text-carbon-400 mb-2; }
 
-  .eyebrow { @apply inline-block text-xs font-semibold uppercase tracking-[0.3em] text-amber-500; }
+  /* ── Type & decorative ── */
+  .eyebrow       { @apply inline-block text-xs font-semibold uppercase tracking-[0.3em]; color: var(--accent-500); }
   .eyebrow-forest { @apply inline-block text-xs font-semibold uppercase tracking-[0.3em] text-forest-400; }
   .section-title { @apply font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl; }
   .section-title-dark { @apply font-serif text-4xl font-semibold leading-tight text-carbon-900 sm:text-5xl; }
-  .amber-text { @apply bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 bg-clip-text text-transparent; }
+
+  .amber-text {
+    background: linear-gradient(90deg, var(--accent-400), var(--accent-hi), var(--accent-500));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
   .forest-text { @apply bg-gradient-to-r from-forest-400 to-forest-300 bg-clip-text text-transparent; }
 
-  .amber-line { @apply h-px w-16 bg-gradient-to-r from-transparent via-amber-500 to-transparent; }
-  .chip { @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold; }
+  .amber-line {
+    @apply h-px w-16;
+    background: linear-gradient(90deg, transparent, var(--accent-500), transparent);
+  }
+  .chip    { @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold; }
   .section { @apply py-20 lg:py-28; }
   .section-sm { @apply py-12 lg:py-16; }
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0a0a0a; }
-::-webkit-scrollbar-thumb { @apply bg-amber-700/40 rounded-full; }
-::-webkit-scrollbar-thumb:hover { @apply bg-amber-600/60; }
+/* ── Scrollbar ── */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: #0a0a0a; }
+::-webkit-scrollbar-thumb  { border-radius: 9999px; background: color-mix(in srgb, var(--accent-700) 40%, transparent); }
+::-webkit-scrollbar-thumb:hover { background: color-mix(in srgb, var(--accent-600) 60%, transparent); }
 
+/* ── Utility: noise overlay ── */
 .noise {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
 }
 
+/* ── Grid background ── */
 .grid-bg {
-  background-image: linear-gradient(rgba(245,158,11,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245,158,11,0.05) 1px, transparent 1px);
+  background-image: linear-gradient(var(--accent-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--accent-grid) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 
 body { transition: background-color 0.4s ease, color 0.4s ease; }
 
+/* ── Accent utility overrides (used inline throughout pages) ── */
+/* These companion classes read CSS vars so existing tailwind amber-* classes
+   work as before while accent-* classes respond to the colour scheme.       */
+
+.text-accent-500  { color: var(--accent-500) !important; }
+.text-accent-400  { color: var(--accent-400) !important; }
+.bg-accent-500    { background-color: var(--accent-500) !important; }
+.bg-accent-400    { background-color: var(--accent-400) !important; }
+.ring-accent-500  { --tw-ring-color: var(--accent-500) !important; }
+.border-accent-500 { border-color: var(--accent-500) !important; }
+
+/* Tailwind amber-* overrides: redirect to accent vars so page components
+   using amber-500, ring-amber-500, etc. automatically pick up the chosen scheme */
+.text-amber-500   { color: var(--accent-500) !important; }
+.text-amber-400   { color: var(--accent-400) !important; }
+.text-amber-300   { color: var(--accent-300) !important; }
+.text-amber-600   { color: var(--accent-600) !important; }
+.bg-amber-500     { background-color: var(--accent-500) !important; }
+.bg-amber-400     { background-color: var(--accent-400) !important; }
+.bg-amber-600     { background-color: var(--accent-600) !important; }
+.border-amber-500 { border-color: var(--accent-500) !important; }
+.ring-amber-500   { --tw-ring-color: var(--accent-500) !important; }
+
+/* Opacity variants */
+.bg-amber-500\/10 { background-color: color-mix(in srgb, var(--accent-500) 10%, transparent) !important; }
+.bg-amber-500\/15 { background-color: color-mix(in srgb, var(--accent-500) 15%, transparent) !important; }
+.bg-amber-500\/20 { background-color: color-mix(in srgb, var(--accent-500) 20%, transparent) !important; }
+.bg-amber-500\/30 { background-color: color-mix(in srgb, var(--accent-500) 30%, transparent) !important; }
+.ring-amber-500\/20 { --tw-ring-color: color-mix(in srgb, var(--accent-500) 20%, transparent) !important; }
+.ring-amber-500\/40 { --tw-ring-color: color-mix(in srgb, var(--accent-500) 40%, transparent) !important; }
+.text-amber-500\/70 { color: color-mix(in srgb, var(--accent-500) 70%, transparent) !important; }
+.shadow-amber { box-shadow: 0 0 40px -8px var(--accent-glow) !important; }
+
+/* ── Line-clamp helpers ── */
 .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .line-clamp-4 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 
+/* ── Chat widget animations ── */
 @keyframes typing { 0%, 60%, 100% { opacity: 0.3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-4px); } }
 .animate-typing { animation: typing 1.2s infinite ease-in-out; }
 
 @keyframes bounceIn { 0% { opacity: 0; transform: scale(0.8) translateY(20px); } 60% { opacity: 1; transform: scale(1.02) translateY(-4px); } 100% { transform: scale(1) translateY(0); } }
 .animate-bounce-in { animation: bounceIn 0.4s ease-out; }
 
-@keyframes pulseAmber { 0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); } 50% { box-shadow: 0 0 0 12px rgba(245, 158, 11, 0); } }
+@keyframes pulseAmber {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+  50%       { box-shadow: 0 0 0 12px transparent; }
+}
 .animate-pulse-amber { animation: pulseAmber 2s infinite; }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
