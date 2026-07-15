@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Mail, MapPin, Clock, Check, X, MessageCircle, ArrowRight, Instagram, Facebook, Twitter, Youtube, Send, AlertCircle, Loader2 } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 import { AGENCY_EMAIL, FOUNDER_WHATSAPP, AGENCY_ADDRESS, AGENCY_LAT, AGENCY_LNG, SERVICES, WORK_WITH_OPTIONS, SOCIAL_LINKS } from '../lib/data';
 
 const socialIcons: Record<string, React.ComponentType<{ size?: number }>> = {
@@ -67,25 +68,37 @@ export default function ContactPage() {
     };
 
     try {
-      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/contact-notify`;
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-        },
-        body: JSON.stringify(payload),
+      // 1. Direct database insert (works with existing RLS policies)
+      const { error: dbError } = await supabase.from('sj_contacts').insert({
+        name: form.name,
+        email: form.email,
+        company: form.company,
+        phone: form.phone,
+        services,
+        budget: form.budget,
+        message: form.message,
+        consultation_code: consultationCode,
       });
 
-      if (!response.ok) {
-        const errData = await response.json().catch(() => ({}));
-        throw new Error(errData.error || `Request failed (${response.status})`);
+      if (dbError) throw new Error(dbError.message);
+
+      // 2. Best-effort email notification via edge function
+      // If the function isn't deployed yet, this fails silently — the DB insert already succeeded
+      try {
+        const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/contact-notify`;
+        await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          },
+          body: JSON.stringify(payload),
+        });
+      } catch {
+        // Edge function may not be deployed yet — contact is already saved in DB
+        console.log('Email notification skipped — edge function not yet deployed');
       }
 
-      const data = await response.json();
-      if (!data.success) {
-        throw new Error(data.error || 'Something went wrong. Please try again.');
-      }
       setSent(true);
     } catch (err: any) {
       setError(err.message || 'Failed to send message. Please try again or email us directly.');
