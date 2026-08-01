@@ -55,53 +55,57 @@ export default function ContactPage() {
     const services = [...selectedServices];
     if (customService.trim()) services.push(customService.trim());
 
-    const payload = {
-      name: form.name,
-      email: form.email,
-      company: form.company,
-      phone: form.phone,
-      services,
-      budget: form.budget,
-      message: form.message,
-      workWith: form.workWith,
-      consultationCode,
-    };
-
     try {
-      // 1. Direct database insert (works with existing RLS policies)
-      const { error: dbError } = await supabase.from('sj_contacts').insert({
-        name: form.name,
-        email: form.email,
-        company: form.company,
-        phone: form.phone,
-        services,
-        budget: form.budget,
-        message: form.message,
-        consultation_code: consultationCode,
-      });
-
-      if (dbError) throw new Error(dbError.message);
-
-      // 2. Best-effort email notification via edge function
-      // If the function isn't deployed yet, this fails silently — the DB insert already succeeded
+      // 1. Save to database (for admin dashboard records)
       try {
-        const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/contact-notify`;
-        await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-          },
-          body: JSON.stringify(payload),
+        await supabase.from('sj_contacts').insert({
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          phone: form.phone,
+          services,
+          budget: form.budget,
+          message: form.message,
+          consultation_code: consultationCode,
         });
       } catch {
-        // Edge function may not be deployed yet — contact is already saved in DB
-        console.log('Email notification skipped — edge function not yet deployed');
+        // DB save is best-effort — email delivery is the priority
+      }
+
+      // 2. Send email notification to officialshopijavid@gmail.com via FormSubmit.co
+      // FormSubmit is a free service that requires no API key or backend.
+      // First submission from a new address triggers a one-time confirmation email from FormSubmit.
+      const formData = new FormData();
+      formData.append('name', form.name);
+      formData.append('email', form.email);
+      formData.append('company', form.company || 'Not provided');
+      formData.append('phone', form.phone || 'Not provided');
+      formData.append('services', services.length > 0 ? services.join(', ') : 'None specified');
+      formData.append('budget', form.budget || 'Not specified');
+      formData.append('workWith', form.workWith || 'No preference');
+      formData.append('consultationCode', consultationCode);
+      formData.append('message', form.message);
+      formData.append('_subject', `New Contact Request from ${form.name} [${consultationCode}]`);
+      formData.append('_template', 'table');
+
+      const emailResponse = await fetch('https://formsubmit.co/ajax/officialshopijavid@gmail.com', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+      });
+
+      if (!emailResponse.ok) {
+        throw new Error('Email delivery failed. Please try again or email us directly.');
+      }
+
+      const emailData = await emailResponse.json();
+      if (emailData.success !== 'true' && emailData.success !== true) {
+        throw new Error('Email delivery failed. Please try again or email us directly.');
       }
 
       setSent(true);
     } catch (err: any) {
-      setError(err.message || 'Failed to send message. Please try again or email us directly.');
+      setError(err.message || 'Failed to send message. Please try again or email us directly at ' + AGENCY_EMAIL);
     } finally {
       setSubmitting(false);
     }
