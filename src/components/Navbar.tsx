@@ -6,6 +6,9 @@ import { useTheme } from '../lib/theme';
 const links = [
   { label: 'Home', to: '/' },
   { label: 'Services', to: '/services' },
+  { label: 'Platforms', to: '/platforms' },
+  { label: 'Pricing', to: '/pricing' },
+  { label: 'Gigs', to: '/gigs' },
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'Team', to: '/team' },
   { label: 'Blog', to: '/blog' },

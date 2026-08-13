@@ -8,6 +8,8 @@ import HomePage from './pages/HomePage';
 import PortfolioPage from './pages/PortfolioPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import ServicesPage from './pages/ServicesPage';
+import PricingPage from './pages/PricingPage';
+import PlatformsPage from './pages/PlatformsPage';
 import GigsPage from './pages/GigsPage';
 import GigDetailPage from './pages/GigDetailPage';
 import BlogPage from './pages/BlogPage';
@@ -28,6 +30,8 @@ function Routes() {
   else if (segments[0] === 'portfolio' && !segments[1]) page = <PortfolioPage />;
   else if (segments[0] === 'portfolio' && segments[1]) page = <ProjectDetailPage id={segments[1]} />;
   else if (segments[0] === 'services') page = <ServicesPage />;
+  else if (segments[0] === 'pricing') page = <PricingPage />;
+  else if (segments[0] === 'platforms') page = <PlatformsPage />;
   else if (segments[0] === 'gigs' && !segments[1]) page = <GigsPage />;
   else if (segments[0] === 'gigs' && segments[1]) page = <GigDetailPage id={segments[1]} />;
   else if (segments[0] === 'blog' && !segments[1]) page = <BlogPage />;
