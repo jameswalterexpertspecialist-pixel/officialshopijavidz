@@ -21,15 +21,15 @@ export default function Footer() {
       <div className="container-page">
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <button onClick={() => navigate('/portfolio')} className="flex items-center gap-3">
+            <button onClick={() => navigate('/')} className="flex items-center gap-3">
               <img src="/images/shopi.jpeg" alt="" className="h-12 w-12 rounded-full object-cover ring-1 ring-white/20" />
               <div>
-                <span className="block font-serif text-xl font-semibold tracking-widest text-white">SHOPIJAVID</span>
-                <span className="block text-xs text-amber-500 tracking-widest">WHAT MATTERS IS RESULTS</span>
+                <span className="block font-serif text-xl font-semibold tracking-wide text-white">Official Shopijavid</span>
+                <span className="block text-xs text-amber-500 tracking-widest">ALL THAT MATTERS IS RESULT</span>
               </div>
             </button>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-carbon-400">
-              Premium ecommerce growth and brand strategy agency. We build brands that look premium and convert profitably. Founded by Jacob David in 2020.
+              We help businesses move from idea to brand to store to promotion to customers to sales to growth. One ecosystem. Multiple solutions. One objective — results.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {SOCIAL_LINKS.map((s) => {
@@ -46,7 +46,7 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-widest text-amber-500">Navigation</h4>
             <ul className="mt-4 space-y-2.5 text-sm">
-              {[['Home','/'],['Portfolio','/portfolio'],['Services','/services'],['Gigs','/gigs'],['Pricing','/pricing'],['Blog','/blog'],['Team','/team'],['Contact','/contact']].map(([l,t]) => (
+              {[['Home','/'],['Services','/services'],['Portfolio','/portfolio'],['Team','/team'],['Blog','/blog'],['Contact','/contact']].map(([l,t]) => (
                 <li key={t}><button onClick={() => navigate(t)} className="text-carbon-400 hover:text-white transition">{l}</button></li>
               ))}
             </ul>
@@ -55,7 +55,7 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-widest text-amber-500">Services</h4>
             <ul className="mt-4 space-y-2.5 text-sm">
-              {['Shopify Development','Ecommerce Branding','Social Media Branding','Product Research','Marketing Strategy','Book Promotion'].map((s) => (
+              {['Shopify Development','Wix Development','WooCommerce','Amazon Optimization','Marketing Strategy','Bookkeeping','Resume Writing','Brand Identity'].map((s) => (
                 <li key={s}><button onClick={() => navigate('/services')} className="text-carbon-400 hover:text-white transition">{s}</button></li>
               ))}
             </ul>
@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row">
-          <p className="text-xs text-carbon-500">© {new Date().getFullYear()} SHOPIJAVID. All rights reserved.</p>
+          <p className="text-xs text-carbon-500">© {new Date().getFullYear()} Official Shopijavid. All rights reserved.</p>
           <div className="flex gap-5 text-xs text-carbon-500">
             <button onClick={() => navigate('/terms')} className="hover:text-white transition">Terms & Conditions</button>
             <button onClick={() => navigate('/terms')} className="hover:text-white transition">Privacy Policy</button>

@@ -81,10 +81,10 @@ export const TESTIMONIALS = [
 ];
 
 export const TEAM = [
-  { name: 'Jacob David', role: 'Founder & Creative Director', img: FOUNDER_IMG, desc: 'Visionary leader with a deep passion for digital innovation and brand building. Jacob founded SHOPIJAVID in 2020 with a mission to help businesses achieve exceptional online growth through premium branding and measurable results.', email: FOUNDER_EMAIL, whatsapp: FOUNDER_WHATSAPP, telegram: FOUNDER_TELEGRAM, isFounder: true },
-  { name: 'Annie Tife', role: 'Team Technician', img: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400', desc: 'Handles technical implementation across projects. Specializes in store setup, theme customization, and quality assurance testing.', telegram: STAFF_TELEGRAM, isFounder: false },
-  { name: 'Isaac James', role: 'Store Supervisor & Audit Manager', img: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=400', desc: 'Oversees store operations and conducts thorough audits. Ensures every project meets our quality standards before client delivery.', telegram: STAFF_TELEGRAM, isFounder: false },
-  { name: 'Daniel Jerry', role: 'Staff', img: 'https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=400', desc: 'Works across multiple project areas including research, content production, and client communication. Reliable and detail oriented.', telegram: STAFF_TELEGRAM, isFounder: false },
+  { name: 'Jacob David', role: 'Founder & Creative Director', agency: 'Official Shopijavid', img: FOUNDER_IMG, desc: 'Visionary leader with a deep passion for digital innovation and brand building. Jacob founded Official Shopijavid in 2020 with a mission to help businesses achieve exceptional online growth through premium branding and measurable results.', email: FOUNDER_EMAIL, whatsapp: FOUNDER_WHATSAPP, telegram: FOUNDER_TELEGRAM, isFounder: true },
+  { name: 'Daniel Jerry', role: 'Manager & Founder', agency: 'Dante Solution Agency', img: 'https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=400', desc: 'Manages operations and leads strategic project delivery across the agency ecosystem. Brings structure, accountability, and results-driven focus to every engagement.', telegram: STAFF_TELEGRAM, isFounder: true },
+  { name: 'Isaac James', role: 'Founder', agency: 'IJ Tech Solutions', img: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=400', desc: 'Leads technical implementation and store development across platforms. Specializes in Shopify, Wix, and WooCommerce builds with a focus on performance and conversion.', telegram: STAFF_TELEGRAM, isFounder: true },
+  { name: 'Annie Tife', role: 'Team Specialist & Campaign Manager', agency: 'AnnieForge Agency', img: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400', desc: 'Manages campaign execution and team coordination across projects. Specializes in store optimization, listing strategy, product presentation, and promotional campaign management.', telegram: STAFF_TELEGRAM, isFounder: true },
 ];
 
 export const MILESTONES = [
@@ -246,4 +246,182 @@ export const WORK_WITH_OPTIONS = [
   'Marketing Team',
   'Full Team Collaboration',
   'Not Sure Yet',
+];
+
+// ─── Commerce Platforms ──────────────────────────────────────────────
+export const PLATFORMS = [
+  {
+    id: 'shopify',
+    name: 'Shopify',
+    tagline: 'Store development & conversion optimization',
+    color: '#96bf48',
+    services: ['Store Development', 'Store Optimization', 'Product Presentation', 'SEO', 'Conversion Optimization', 'Marketing'],
+    desc: 'Custom Shopify stores built for speed, conversion, and premium customer experience.',
+  },
+  {
+    id: 'wix',
+    name: 'Wix',
+    tagline: 'Website development & ecommerce setup',
+    color: '#0c80ef',
+    services: ['Website Development', 'Ecommerce Setup', 'UX/UI Design', 'Optimization', 'Marketing'],
+    desc: 'Professional Wix websites and stores with custom design and seamless user experience.',
+  },
+  {
+    id: 'woocommerce',
+    name: 'WooCommerce',
+    tagline: 'Store development & performance optimization',
+    color: '#7f54b3',
+    services: ['Store Development', 'Product Management', 'SEO', 'Performance Optimization'],
+    desc: 'Powerful WooCommerce stores with flexible product management and SEO foundations.',
+  },
+  {
+    id: 'etsy',
+    name: 'Etsy',
+    tagline: 'Shop optimization & listing strategy',
+    color: '#f56400',
+    services: ['Shop Optimization', 'Listing Strategy', 'Product Presentation', 'Promotion'],
+    desc: 'Etsy shop optimization with listing strategy and product presentation that stands out.',
+  },
+  {
+    id: 'amazon',
+    name: 'Amazon',
+    tagline: 'Listing optimization & brand presentation',
+    color: '#ff9900',
+    services: ['Product Listing Optimization', 'Brand Presentation', 'Store Optimization', 'Marketing'],
+    desc: 'Amazon listing optimization and brand presentation that improves discoverability and conversion.',
+  },
+];
+
+// ─── Platform Marquee ─────────────────────────────────────────────────
+export const MARQUEE_PLATFORMS = [
+  'Shopify', 'Wix', 'WooCommerce', 'Etsy', 'Amazon',
+  'Google', 'Meta', 'Instagram', 'Facebook', 'TikTok', 'YouTube',
+];
+
+// ─── Categorized Services for Services Page ──────────────────────────
+export type ServiceCategory = {
+  id: string;
+  name: string;
+  icon: string;
+  services: { name: string; desc: string; icon: string }[];
+};
+
+export const SERVICE_CATEGORIES: ServiceCategory[] = [
+  {
+    id: 'ecommerce',
+    name: 'Ecommerce & Store Development',
+    icon: 'ShoppingBag',
+    services: [
+      { name: 'Shopify Store Development', desc: 'Custom Shopify stores built for speed, conversion, and premium experience.', icon: 'ShoppingCart' },
+      { name: 'Shopify Store Optimization', desc: 'Audit and optimize your existing Shopify store for higher conversion rates.', icon: 'TrendingUp' },
+      { name: 'Wix Store Development', desc: 'Professional Wix websites and ecommerce stores with custom design.', icon: 'Globe' },
+      { name: 'WooCommerce Development', desc: 'Flexible WooCommerce stores with SEO foundations and performance tuning.', icon: 'Package' },
+      { name: 'Etsy Store Optimization', desc: 'Listing strategy, shop optimization, and product presentation for Etsy.', icon: 'Tag' },
+      { name: 'Amazon Store Optimization', desc: 'Listing optimization and brand presentation for Amazon marketplace.', icon: 'Box' },
+      { name: 'Store Setup', desc: 'Complete store setup from platform selection to product upload and configuration.', icon: 'Settings' },
+      { name: 'Store Redesign', desc: 'Redesign your existing store with a premium look that converts better.', icon: 'RefreshCw' },
+      { name: 'Product Page Optimization', desc: 'Optimize product pages for maximum conversion with better presentation.', icon: 'FileText' },
+      { name: 'Conversion Rate Optimization', desc: 'Data-driven CRO to turn more visitors into paying customers.', icon: 'Target' },
+      { name: 'Mobile Store Optimization', desc: 'Ensure your store works flawlessly on every mobile device.', icon: 'Smartphone' },
+      { name: 'Checkout Optimization', desc: 'Streamline checkout flow to reduce abandonment and increase completion.', icon: 'CreditCard' },
+      { name: 'Product Research', desc: 'Data-driven product research to identify winning products and opportunities.', icon: 'Search' },
+      { name: 'Marketplace Optimization', desc: 'Optimize your presence across multiple marketplaces for maximum visibility.', icon: 'Store' },
+      { name: 'Customer Experience Optimization', desc: 'Improve the end-to-end customer journey from discovery to purchase.', icon: 'Heart' },
+    ],
+  },
+  {
+    id: 'marketing',
+    name: 'Marketing & Growth',
+    icon: 'Megaphone',
+    services: [
+      { name: 'Brand Promotion', desc: 'Strategic brand promotion campaigns that put your brand in front of the right audience.', icon: 'Sparkles' },
+      { name: 'Social Media Marketing', desc: 'Full social media marketing across Instagram, TikTok, Facebook, and LinkedIn.', icon: 'Share2' },
+      { name: 'Paid Advertising', desc: 'Performance-focused paid ad campaigns on Meta, TikTok, Google, and YouTube.', icon: 'Megaphone' },
+      { name: 'SEO', desc: 'Technical and content SEO that ranks your brand and drives organic traffic.', icon: 'Search' },
+      { name: 'Email Marketing', desc: 'Email automation sequences that drive repeat purchases and recover lost sales.', icon: 'Mail' },
+      { name: 'Content Marketing', desc: 'Content strategy and creation that attracts qualified leads and builds authority.', icon: 'PenTool' },
+      { name: 'Product Promotion', desc: 'Strategic product promotion campaigns that drive targeted sales.', icon: 'Tag' },
+      { name: 'Video Marketing', desc: 'Video content marketing for higher engagement across all platforms.', icon: 'Video' },
+      { name: 'Retargeting', desc: 'Retargeting systems that recover lost sales and bring visitors back.', icon: 'RotateCcw' },
+      { name: 'Customer Acquisition', desc: 'Data-driven customer acquisition strategies that lower CAC over time.', icon: 'UserPlus' },
+      { name: 'Campaign Management', desc: 'Full campaign management from strategy to execution to optimization.', icon: 'Calendar' },
+      { name: 'Digital Marketing Strategy', desc: 'Comprehensive digital marketing strategy tailored to your business goals.', icon: 'Compass' },
+    ],
+  },
+  {
+    id: 'business',
+    name: 'Business & Professional Services',
+    icon: 'Briefcase',
+    services: [
+      { name: 'Bookkeeping', desc: 'Professional bookkeeping services to keep your business finances organized and accurate.', icon: 'Calculator' },
+      { name: 'Resume Writing', desc: 'ATS-friendly resume writing that helps you stand out and land interviews.', icon: 'FileText' },
+      { name: 'Business Documentation', desc: 'Professional business documentation, policies, and operational materials.', icon: 'Folder' },
+      { name: 'Ecommerce Consultation', desc: 'Expert ecommerce consultation with practical recommendations for your store.', icon: 'MessageSquare' },
+      { name: 'Business Consultation', desc: 'Strategic business consultation to help you identify opportunities and overcome challenges.', icon: 'Lightbulb' },
+      { name: 'Account Management', desc: 'Ongoing account management with regular monitoring, updates, and performance reviews.', icon: 'Users' },
+      { name: 'Outsourcing Assistance', desc: 'Identify what to outsource and manage service providers for better productivity.', icon: 'Network' },
+      { name: 'Digital Business Strategy', desc: 'Complete digital business strategy that aligns technology with your growth goals.', icon: 'Compass' },
+    ],
+  },
+  {
+    id: 'creative',
+    name: 'Creative & Media',
+    icon: 'Palette',
+    services: [
+      { name: 'Video Animation', desc: 'Cinematic video animation with motion graphics, visual effects, and brand integration.', icon: 'Film' },
+      { name: 'Video Editing', desc: 'Professional video editing for social media, YouTube, ads, and brand campaigns.', icon: 'Scissors' },
+      { name: 'Graphic Design', desc: 'Premium graphic design for branding, marketing, and promotional materials.', icon: 'Palette' },
+      { name: 'Product Promotional Videos', desc: 'Product showcase videos that highlight features and drive purchase decisions.', icon: 'Video' },
+      { name: 'Social Media Creatives', desc: 'Scroll-stopping social media creatives that drive engagement and shares.', icon: 'Image' },
+      { name: 'Brand Identity', desc: 'Complete brand identity systems from logo to typography to visual language.', icon: 'Sparkles' },
+      { name: 'Marketing Creatives', desc: 'Ad creatives, landing page designs, and marketing collateral that converts.', icon: 'Layout' },
+      { name: 'Content Creation', desc: 'Multi-format content creation including photography, video, and copywriting.', icon: 'PenTool' },
+    ],
+  },
+  {
+    id: 'strategy',
+    name: 'Research & Strategy',
+    icon: 'Compass',
+    services: [
+      { name: 'Product Research', desc: 'Deep product research using market data, competitor analysis, and demand validation.', icon: 'Search' },
+      { name: 'Competitor Research', desc: 'Comprehensive competitor analysis to identify gaps and opportunities in your market.', icon: 'Users' },
+      { name: 'Market Research', desc: 'Market research that helps you understand your audience, demand, and positioning.', icon: 'Globe' },
+      { name: 'Digital Branding Strategy', desc: 'Strategic digital branding that builds recognition and trust across channels.', icon: 'Sparkles' },
+      { name: 'Marketplace Strategy', desc: 'Marketplace-specific strategy for Shopify, Etsy, Amazon, and WooCommerce.', icon: 'Store' },
+      { name: 'Customer Experience Analysis', desc: 'Analyze and improve every touchpoint in your customer journey.', icon: 'Heart' },
+      { name: 'Growth Strategy', desc: 'Data-driven growth strategy that identifies your highest-impact opportunities.', icon: 'TrendingUp' },
+      { name: 'Conversion Strategy', desc: 'Strategic conversion optimization plan to turn more visitors into customers.', icon: 'Target' },
+    ],
+  },
+];
+
+// ─── Process Steps ───────────────────────────────────────────────────
+export const PROCESS_STEPS = [
+  { num: '01', title: 'Discover', desc: 'Understand the business, product, audience, and objectives.', icon: 'Search' },
+  { num: '02', title: 'Evaluate', desc: 'Identify opportunities across the store, brand, customer experience, and marketing.', icon: 'ClipboardCheck' },
+  { num: '03', title: 'Build', desc: 'Develop or improve the systems required for growth.', icon: 'Hammer' },
+  { num: '04', title: 'Promote', desc: 'Help the product reach the right audience through strategic promotion.', icon: 'Megaphone' },
+  { num: '05', title: 'Optimize', desc: 'Monitor performance and identify opportunities for improvement.', icon: 'TrendingUp' },
+  { num: '06', title: 'Results', desc: 'Focus on measurable business progress and outcomes.', icon: 'Award' },
+];
+
+// ─── Trust Cards ─────────────────────────────────────────────────────
+export const TRUST_CARDS = [
+  { title: 'Better Store Experience', desc: 'Make it easier for customers to understand and interact with products.', icon: 'Store' },
+  { title: 'Stronger Brand Presence', desc: 'Build a consistent and recognizable digital identity.', icon: 'Sparkles' },
+  { title: 'Effective Promotion', desc: 'Help products reach relevant audiences through strategic marketing.', icon: 'Megaphone' },
+  { title: 'Better Customer Experience', desc: 'Reduce friction between discovery and purchase.', icon: 'Heart' },
+  { title: 'Smarter Growth Strategy', desc: 'Use performance insights to identify opportunities.', icon: 'TrendingUp' },
+];
+
+// ─── Result Journey ──────────────────────────────────────────────────
+export const RESULT_JOURNEY = [
+  { label: 'Dream', desc: 'Every merchant starts with a dream.' },
+  { label: 'Product', desc: 'A product to offer the world.' },
+  { label: 'Brand', desc: 'A brand that represents their vision.' },
+  { label: 'Store', desc: 'A store to showcase what they built.' },
+  { label: 'Promotion', desc: 'Reaching the right audience.' },
+  { label: 'Customers', desc: 'People discovering and trusting the brand.' },
+  { label: 'Sales', desc: 'Purchases that sustain the business.' },
+  { label: 'Growth', desc: 'The dream becoming reality.' },
 ];

@@ -17,6 +17,7 @@ import TeamPage from './pages/TeamPage';
 import CareersPage from './pages/CareersPage';
 import TermsPage from './pages/TermsPage';
 import AdminPage from './pages/AdminPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function Routes() {
   const { route } = useHashRoute();
@@ -36,7 +37,7 @@ function Routes() {
   else if (segments[0] === 'careers') page = <CareersPage />;
   else if (segments[0] === 'terms') page = <TermsPage />;
   else if (segments[0] === 'admin') page = <AdminPage />;
-  else page = <HomePage />;
+  else page = <NotFoundPage />;
 
   const isAdmin = segments[0] === 'admin';
 
