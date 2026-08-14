@@ -16,7 +16,7 @@ const Ctx = createContext<ThemeCtx | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('dark');
-  const [accent, setAccentState] = useState<Accent>('blue');
+  const [accent, setAccentState] = useState<Accent>('green');
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('sj-theme') as Theme | null;
