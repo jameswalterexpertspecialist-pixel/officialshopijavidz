@@ -5,6 +5,8 @@ import {
 } from 'lucide-react';
 
 // ─── Real data arrays ────────────────────────────────────────────────
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+
 const REVENUE_DATA = [
   { month: 'Jan', value: 42000 },
   { month: 'Feb', value: 48000 },
@@ -340,9 +342,9 @@ export default function AnalyticsDashboard({ compact = false }: { compact?: bool
   return (
     <div className="card-dark p-5 sm:p-6">
       {/* Disclaimer */}
-      <div className="mb-4 flex items-center gap-2 rounded-lg bg-electric-500/10 px-3 py-2 ring-1 ring-electric-500/20">
-        <span className="text-xs text-electric-400 font-semibold">CAPABILITY DEMO</span>
-        <span className="text-xs text-carbon-400">— Interactive analytics interface demonstrating data-driven chart components. Connect verified store data to make it yours.</span>
+      <div className="mb-4 flex items-center gap-2 rounded-lg bg-amber-500/10 px-3 py-2 ring-1 ring-amber-500/20">
+        <span className="text-xs text-amber-500 font-semibold">ILLUSTRATIVE DATA</span>
+        <span className="text-xs text-carbon-400">— This dashboard uses illustrative data, not actual client results.</span>
       </div>
 
       {/* Header */}
