@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import {
   ArrowRight, ArrowUpRight, TrendingUp, Mail, MessageCircle, Send,
   Instagram, Facebook, Twitter, Youtube, Quote, Star, Target,
-  Sparkles, Store, ShoppingBag, Megaphone, Palette, Compass,
-  Award, Users, Heart, ChevronRight,
+  Store, Megaphone, Palette, Compass,
+  Award,
 } from 'lucide-react';
 import { useHashRoute } from '../lib/router';
 import {

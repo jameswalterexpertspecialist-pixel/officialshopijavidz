@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Star, Clock, ArrowRight, Search, Check } from 'lucide-react';
+import { Star, ArrowRight, Search } from 'lucide-react';
 import { useHashRoute } from '../lib/router';
 import { GIGS } from '../lib/data';
 

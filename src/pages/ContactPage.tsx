@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Mail, MapPin, Clock, Check, X, MessageCircle, ArrowRight, Instagram, Facebook, Twitter, Youtube, Send, AlertCircle, Loader2, Globe } from 'lucide-react';
+import { Mail, MapPin, Clock, Check, X, MessageCircle, ArrowRight, Instagram, Facebook, Twitter, Youtube, AlertCircle, Loader2, Globe } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { AGENCY_EMAIL, FOUNDER_WHATSAPP, AGENCY_ADDRESS, AGENCY_LAT, AGENCY_LNG, SERVICES, WORK_WITH_OPTIONS, SOCIAL_LINKS } from '../lib/data';
 
@@ -140,8 +140,9 @@ export default function ContactPage() {
       }
 
       setSent(true);
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong. Please try again or contact us directly at ' + AGENCY_EMAIL);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Something went wrong. Please try again or contact us directly at ' + AGENCY_EMAIL;
+      setError(msg);
     } finally {
       setSubmitting(false);
     }

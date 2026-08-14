@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Send, LogOut, Search, Clock, CheckCircle, AlertCircle, MessageSquare, Users, Headphones, X, RefreshCw, Mail, Phone, Building2, Globe, Tag, ArrowLeft } from 'lucide-react';
+import { Send, LogOut, Search, Clock, CheckCircle, AlertCircle, MessageSquare, Headphones, X, RefreshCw, Mail, Phone, Building2, Globe, Tag, ArrowLeft } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useHashRoute } from '../lib/router';
 
@@ -66,7 +66,7 @@ export default function AdminPage() {
       // Find and select this session
       handleSelectSession(sessionParam);
     }
-  }, [authed, route]);
+  }, [authed, route, handleSelectSession]);
 
   const handleLogin = async () => {
     setLoginLoading(true);
@@ -111,7 +111,7 @@ export default function AdminPage() {
 
   const fetchSessions = useCallback(async () => {
     setLoading(true);
-    let query = supabase.from('sj_live_sessions').select('*').order('updated_at', { ascending: false });
+    const query = supabase.from('sj_live_sessions').select('*').order('updated_at', { ascending: false });
     const { data, error } = await query;
     if (!error && data) {
       setSessions(data as Session[]);

@@ -1,9 +1,7 @@
 import { ArrowRight, MapPin, Briefcase } from 'lucide-react';
-import { useHashRoute } from '../lib/router';
 import { CAREERS, AGENCY_EMAIL } from '../lib/data';
 
 export default function CareersPage() {
-  const { navigate } = useHashRoute();
   return (
     <div className="pt-20">
       <section className="relative bg-carbon-950 py-16 overflow-hidden">

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { MessageSquare, X, Send, Loader2, Headphones, Clock, Check, User, Mail, Phone, Building2, AlertCircle } from 'lucide-react';
+import { MessageSquare, X, Send, Loader2, Headphones, Check, User, Mail, Phone, Building2 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 type Message = { role: 'user' | 'ai' | 'agent' | 'system'; content: string; sender_name?: string };
@@ -108,7 +108,7 @@ export default function AIChatbot() {
       if (newMsgs && newMsgs.length > 0) {
         lastMsgTime = newMsgs[newMsgs.length - 1].created_at;
         setAgentTyping(false);
-        setMessages((prev) => [...prev, ...newMsgs.map((m: any) => ({ role: 'agent' as const, content: m.content, sender_name: m.sender_name }))]);
+        setMessages((prev) => [...prev, ...newMsgs.map((m: { content: string; sender_name?: string }) => ({ role: 'agent' as const, content: m.content, sender_name: m.sender_name }))]);
       }
     }, 3000);
 
@@ -133,7 +133,7 @@ export default function AIChatbot() {
           ...extra,
         }),
       });
-    } catch (e) { /* silent fail */ }
+    } catch { /* silent fail */ }
   }, [sessionId, contactForm, pageSource, messages]);
 
   const startChat = () => {
