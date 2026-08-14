@@ -2,44 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Accent colour schemes ─────────────────────────────────────────────── */
-/* Default: Emerald Green */
+/* ─── Default: Electric Blue / Cyan tech-company palette ──────────────── */
 :root {
-  --accent-50:  #ecfdf5;
-  --accent-100: #d1fae5;
-  --accent-200: #a7f3d0;
-  --accent-300: #6ee7b7;
-  --accent-400: #34d399;
-  --accent-500: #10b981;
-  --accent-600: #059669;
-  --accent-700: #047857;
-  --accent-800: #065f46;
-  --accent-900: #064e3b;
-  --accent-glow: rgba(16, 185, 129, 0.40);
-  --accent-glow-ring: rgba(16, 185, 129, 0.35);
-  --accent-grid: rgba(16, 185, 129, 0.05);
-  --accent-hi: #34d399;
-}
-
-/* Blue scheme (logo colours) */
-body.accent-blue {
   --accent-50:  #eff6ff;
   --accent-100: #dbeafe;
   --accent-200: #bfdbfe;
   --accent-300: #93c5fd;
   --accent-400: #60a5fa;
-  --accent-500: #3b82f6;
-  --accent-600: #2563eb;
-  --accent-700: #1d4ed8;
-  --accent-800: #1e40af;
-  --accent-900: #1e3a8a;
-  --accent-glow: rgba(59, 130, 246, 0.40);
-  --accent-glow-ring: rgba(59, 130, 246, 0.35);
-  --accent-grid: rgba(59, 130, 246, 0.05);
-  --accent-hi: #0ea5e9;
+  --accent-500: #2563eb;
+  --accent-600: #1d4ed8;
+  --accent-700: #1e40af;
+  --accent-800: #1e3a8a;
+  --accent-900: #172554;
+  --accent-glow: rgba(37, 99, 235, 0.45);
+  --accent-glow-ring: rgba(37, 99, 235, 0.35);
+  --accent-grid: rgba(37, 99, 235, 0.06);
+  --accent-hi: #06b6d4;
+
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --cyan-glow: rgba(6, 182, 212, 0.35);
 }
 
-/* Gold / Amber scheme */
+/* Green scheme (user-selectable) */
+body.accent-green {
+  --accent-50:  #ecfdf5;
+  --accent-100: #d1fae5;
+  --accent-200: #a7f3d0;
+  --accent-300: #6ee7b7;
+  --accent-400: #4ade80;
+  --accent-500: #22c55e;
+  --accent-600: #16a34a;
+  --accent-700: #15803d;
+  --accent-800: #166534;
+  --accent-900: #14532d;
+  --accent-glow: rgba(34, 197, 94, 0.40);
+  --accent-glow-ring: rgba(34, 197, 94, 0.35);
+  --accent-grid: rgba(34, 197, 94, 0.05);
+  --accent-hi: #4ade80;
+}
+
+/* Gold / Amber scheme (user-selectable) */
 body.accent-gold {
   --accent-50:  #fffbeb;
   --accent-100: #fef3c7;
@@ -63,7 +66,7 @@ body.accent-gold {
     @apply bg-carbon-950 text-white font-sans antialiased;
     font-feature-settings: "ss01";
   }
-  body.theme-light { @apply bg-stone-50 text-carbon-900; }
+  body.theme-light { @apply bg-slate-50 text-carbon-900; }
   body.theme-dark  { @apply bg-carbon-950 text-white; }
   ::selection { background: var(--accent-500); color: #fff; opacity: 0.3; }
 }
@@ -71,54 +74,64 @@ body.accent-gold {
 @layer components {
   .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
 
-  /* ── Buttons ── */
-  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed; }
+  /* ── Buttons — tech company system ── */
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed; }
 
-  /* accent buttons — driven by CSS vars */
+  /* Primary: Electric blue, white text, glow shadow */
   .btn-amber {
     @apply btn hover:-translate-y-0.5 hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm;
     background-color: var(--accent-500);
     color: #fff;
-    box-shadow: 0 0 40px -8px var(--accent-glow);
+    box-shadow: 0 0 30px -6px var(--accent-glow), 0 2px 8px -2px rgba(0,0,0,0.3);
   }
-  .btn-amber:hover { background-color: var(--accent-400); }
+  .btn-amber:hover { background-color: var(--accent-400); box-shadow: 0 0 40px -4px var(--accent-glow), 0 4px 12px -2px rgba(0,0,0,0.35); }
 
+  /* Outline: transparent, accent border */
   .btn-outline-amber {
     @apply btn hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm;
     border: 1px solid var(--accent-500);
     color: var(--accent-500);
+    background: transparent;
   }
-  .btn-outline-amber:hover { background-color: var(--accent-500); color: #fff; }
+  .btn-outline-amber:hover { background-color: var(--accent-500); color: #fff; box-shadow: 0 0 24px -6px var(--accent-glow); }
 
-  /* Gold variant keeps amber tokens for cases where we truly want amber */
-  .btn-forest { @apply btn bg-forest-600 text-white hover:bg-forest-500 shadow-forest hover:-translate-y-0.5 hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm; }
-  .btn-white  { @apply btn bg-white text-carbon-900 hover:bg-stone-100 shadow-card hover:-translate-y-0.5 hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm; }
-  .btn-ghost  {
+  /* Ghost: white border, transparent */
+  .btn-ghost {
     @apply btn border border-white/20 text-white hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm;
-    transition: border-color 0.3s, color 0.3s;
+    transition: border-color 0.3s, color 0.3s, background-color 0.3s;
   }
-  .btn-ghost:hover { border-color: var(--accent-500); color: var(--accent-500); }
+  .btn-ghost:hover { border-color: var(--cyan-400); color: var(--cyan-400); background: rgba(6,182,212,0.08); }
+
+  /* Forest/green button — used sparingly for success/verified states */
+  .btn-forest { @apply btn bg-forest-500 text-white hover:bg-forest-400 shadow-forest hover:-translate-y-0.5 hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm; }
+  .btn-white  { @apply btn bg-white text-carbon-900 hover:bg-slate-100 shadow-card hover:-translate-y-0.5 hover:scale-[1.02] active:scale-95 px-7 py-3.5 text-sm; }
   .btn-sm { @apply px-5 py-2.5 text-xs; }
 
   /* ── Cards ── */
-  .card-dark   { @apply rounded-2xl bg-carbon-900 ring-1 ring-white/10; }
-  .card-light  { @apply rounded-2xl bg-white ring-1 ring-carbon-200/60 shadow-card; }
+  .card-dark   { @apply rounded-2xl bg-carbon-800 ring-1 ring-white/8; }
+  .card-light  { @apply rounded-2xl bg-white ring-1 ring-slate-200 shadow-card; }
   .card-forest { @apply rounded-2xl bg-forest-950 ring-1 ring-forest-700/40; }
+  .card-glass  { @apply rounded-2xl backdrop-blur-xl ring-1 ring-white/10; background: rgba(15,23,42,0.6); }
 
   /* ── Inputs ── */
   .input-dark  { @apply w-full rounded-xl border-0 bg-carbon-800 px-4 py-3.5 text-sm text-white ring-1 ring-white/10 placeholder:text-carbon-400 transition outline-none; }
   .input-dark:focus { outline: none; box-shadow: 0 0 0 2px var(--accent-500); }
-  .input-light { @apply w-full rounded-xl border-0 bg-stone-100 px-4 py-3.5 text-sm text-carbon-900 ring-1 ring-carbon-200 placeholder:text-carbon-400 focus:ring-2 focus:ring-forest-500 transition outline-none; }
+  .input-light { @apply w-full rounded-xl border-0 bg-slate-100 px-4 py-3.5 text-sm text-carbon-900 ring-1 ring-slate-200 placeholder:text-carbon-400 focus:ring-2 focus:ring-electric-500 transition outline-none; }
   .label       { @apply block text-xs font-semibold uppercase tracking-widest text-carbon-400 mb-2; }
 
   /* ── Type & decorative ── */
-  .eyebrow       { @apply inline-block text-xs font-semibold uppercase tracking-[0.3em]; color: var(--accent-500); }
+  .eyebrow       { @apply inline-block text-xs font-semibold uppercase tracking-[0.3em]; color: var(--accent-400); }
   .eyebrow-forest { @apply inline-block text-xs font-semibold uppercase tracking-[0.3em] text-forest-400; }
+  .eyebrow-cyan   { @apply inline-block text-xs font-semibold uppercase tracking-[0.3em]; color: var(--cyan-400); }
   .section-title { @apply font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl; }
   .section-title-dark { @apply font-serif text-4xl font-semibold leading-tight text-carbon-900 sm:text-5xl; }
 
   .amber-text {
     color: var(--accent-400);
+    font-weight: 600;
+  }
+  .cyan-text {
+    color: var(--cyan-400);
     font-weight: 600;
   }
   .forest-text { @apply bg-gradient-to-r from-forest-400 to-forest-300 bg-clip-text text-transparent; }
@@ -134,9 +147,9 @@ body.accent-gold {
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar        { width: 6px; }
-::-webkit-scrollbar-track  { background: #0a0a0a; }
-::-webkit-scrollbar-thumb  { border-radius: 9999px; background: color-mix(in srgb, var(--accent-700) 40%, transparent); }
-::-webkit-scrollbar-thumb:hover { background: color-mix(in srgb, var(--accent-600) 60%, transparent); }
+::-webkit-scrollbar-track  { background: #07111f; }
+::-webkit-scrollbar-thumb  { border-radius: 9999px; background: color-mix(in srgb, var(--accent-600) 40%, transparent); }
+::-webkit-scrollbar-thumb:hover { background: color-mix(in srgb, var(--accent-500) 60%, transparent); }
 
 /* ── Utility: noise overlay ── */
 .noise {
@@ -150,12 +163,17 @@ body.accent-gold {
   background-size: 64px 64px;
 }
 
+/* ── Tech grid background (cyan-tinted) ── */
+.grid-tech {
+  background-image:
+    linear-gradient(rgba(6,182,212,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
 body { transition: background-color 0.4s ease, color 0.4s ease; }
 
-/* ── Accent utility overrides (used inline throughout pages) ── */
-/* These companion classes read CSS vars so existing tailwind amber-* classes
-   work as before while accent-* classes respond to the colour scheme.       */
-
+/* ── Accent utility overrides ── */
 .text-accent-500  { color: var(--accent-500) !important; }
 .text-accent-400  { color: var(--accent-400) !important; }
 .bg-accent-500    { background-color: var(--accent-500) !important; }
@@ -163,8 +181,7 @@ body { transition: background-color 0.4s ease, color 0.4s ease; }
 .ring-accent-500  { --tw-ring-color: var(--accent-500) !important; }
 .border-accent-500 { border-color: var(--accent-500) !important; }
 
-/* Tailwind amber-* overrides: redirect to accent vars so page components
-   using amber-500, ring-amber-500, etc. automatically pick up the chosen scheme */
+/* Tailwind amber-* overrides: redirect to accent vars */
 .text-amber-500   { color: var(--accent-500) !important; }
 .text-amber-400   { color: var(--accent-400) !important; }
 .text-amber-300   { color: var(--accent-300) !important; }
@@ -185,6 +202,11 @@ body { transition: background-color 0.4s ease, color 0.4s ease; }
 .text-amber-500\/70 { color: color-mix(in srgb, var(--accent-500) 70%, transparent) !important; }
 .shadow-amber { box-shadow: 0 0 40px -8px var(--accent-glow) !important; }
 
+/* ── Cyan utilities ── */
+.text-cyan-accent { color: var(--cyan-400) !important; }
+.bg-cyan-accent { background-color: var(--cyan-500) !important; }
+.ring-cyan-accent { --tw-ring-color: var(--cyan-400) !important; }
+
 /* ── Line-clamp helpers ── */
 .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
@@ -202,6 +224,13 @@ body { transition: background-color 0.4s ease, color 0.4s ease; }
   50%       { box-shadow: 0 0 0 12px transparent; }
 }
 .animate-pulse-amber { animation: pulseAmber 2s infinite; }
+.animate-pulse-accent { animation: pulseAmber 2s infinite; }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 .animate-fade-in { animation: fadeIn 0.3s ease-out; }
+
+/* ── Parallax helper ── */
+.parallax-img {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}

@@ -358,9 +358,9 @@ export default function HomePage() {
       <section className="section bg-carbon-950">
         <div className="container-page">
           <Reveal className="mb-8 text-center">
-            <span className="eyebrow">Illustrative Growth Dashboard</span>
-            <h2 className="mt-4 section-title">Visualizing Business Growth</h2>
-            <p className="mx-auto mt-4 max-w-lg text-carbon-400">An illustration of the metrics we help businesses track and improve. Numbers shown are illustrative, not actual client results. Switch between revenue, orders, visitors, and conversion metrics.</p>
+            <span className="eyebrow-cyan">Data-Driven Growth</span>
+            <h2 className="mt-4 section-title">Build Systems That Learn</h2>
+            <p className="mx-auto mt-4 max-w-lg text-carbon-400">We build analytics experiences that turn your business data into clear decisions. Explore the interactive interface below as a product capability demonstration — connect verified store data to make it yours.</p>
           </Reveal>
           <Reveal>
             <AnalyticsDashboard />
