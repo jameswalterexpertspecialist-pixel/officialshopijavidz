@@ -132,7 +132,7 @@ export default function ServicesPage() {
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {cat.services.map((s) => (
+                  {cat.services.map((s, si) => (
                     <div
                       key={s.name}
                       className="group card-dark p-5 transition-all hover:-translate-y-1 hover:ring-amber-500/20 hover:shadow-lift"

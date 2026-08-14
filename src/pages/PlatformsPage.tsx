@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { ArrowRight, Store, Check, ChevronRight } from 'lucide-react';
 import { useHashRoute } from '../lib/router';
 import { PLATFORMS, MARQUEE_PLATFORMS } from '../lib/data';
 import InteractiveStore from '../components/InteractiveStore';
