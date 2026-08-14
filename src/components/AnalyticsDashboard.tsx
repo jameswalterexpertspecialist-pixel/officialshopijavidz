@@ -5,8 +5,6 @@ import {
 } from 'lucide-react';
 
 // ─── Real data arrays ────────────────────────────────────────────────
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
-
 const REVENUE_DATA = [
   { month: 'Jan', value: 42000 },
   { month: 'Feb', value: 48000 },
