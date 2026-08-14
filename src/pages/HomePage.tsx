@@ -12,10 +12,10 @@ import { useHashRoute } from '../lib/router';
 import {
   PLATFORMS, SERVICE_CATEGORIES, PROCESS_STEPS, TRUST_CARDS,
   MARQUEE_PLATFORMS, RESULT_JOURNEY, AGENCY_EMAIL, FOUNDED_YEAR,
-  SLIDES, GIGS, PRICING,
+  SLIDES, GIGS, PRICING, SERVICE_CATEGORIES,
 } from '../lib/data';
 import InteractiveStore from '../components/InteractiveStore';
-import AnalyticsDashboard from '../components/AnalyticsDashboard';
+
 
 // ─── Icon resolver ───────────────────────────────────────────────────
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -282,11 +282,12 @@ export default function HomePage() {
   const { navigate } = useHashRoute();
   const [heroFrame, setHeroFrame] = useState(0);
   const [storeTab, setStoreTab] = useState(0);
-  const [serviceFilter, setServiceFilter] = useState('All');
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [marqueeOffset, setMarqueeOffset] = useState(0);
+  const [beyondParallax, setBeyondParallax] = useState(0);
+  const beyondRef = useRef<HTMLElement>(null);
   const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
   useEffect(() => {
@@ -301,21 +302,32 @@ export default function HomePage() {
     return () => clearInterval(t);
   }, [reduced]);
 
+  useEffect(() => {
+    if (reduced) return;
+    const onScroll = () => {
+      if (!beyondRef.current) return;
+      const rect = beyondRef.current.getBoundingClientRect();
+      const viewport = window.innerHeight;
+      if (rect.top < viewport && rect.bottom > 0) {
+        const progress = (viewport - rect.top) / (viewport + rect.height);
+        setBeyondParallax(progress * -40);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [reduced]);
+
   const STORE_TABS = ['shopify', 'wix', 'woocommerce', 'etsy', 'amazon'] as const;
-  const filterOptions = ['All', ...SERVICE_CATEGORIES.map(c => c.name.split(' ')[0])];
-  const filteredCategories = serviceFilter === 'All'
-    ? SERVICE_CATEGORIES
-    : SERVICE_CATEGORIES.filter(c => c.name.startsWith(serviceFilter));
   const featuredGigs = GIGS.slice(0, 8);
 
   return (
     <div className="overflow-x-hidden">
       {/* ═══ HERO SECTION ═══ */}
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-carbon-950">
-        <div className="absolute inset-0 grid-bg opacity-20" />
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-px w-3/4 bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
-        <div className="absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-forest-600/10 blur-3xl" />
-        <div className="absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-amber-500/8 blur-3xl" />
+        <div className="absolute inset-0 grid-tech opacity-30" />
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-px w-3/4 bg-gradient-to-r from-transparent via-electric-500/40 to-transparent" />
+        <div className="absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-electric-600/10 blur-3xl animate-glow-pulse" />
+        <div className="absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-cyan-500/8 blur-3xl animate-glow-pulse" style={{ animationDelay: '2s' }} />
 
         <div className="container-page relative py-12 lg:py-0">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
@@ -354,16 +366,27 @@ export default function HomePage() {
         <Slideshow />
       </section>
 
-      {/* ═══ ANALYTICS DASHBOARD — Real data-driven ═══ */}
+      {/* ═══ VIDEO SHOWCASE ═══ */}
       <section className="section bg-carbon-950">
         <div className="container-page">
           <Reveal className="mb-8 text-center">
             <span className="eyebrow-cyan">Data-Driven Growth</span>
             <h2 className="mt-4 section-title">Build Systems That Learn</h2>
-            <p className="mx-auto mt-4 max-w-lg text-carbon-400">We build analytics experiences that turn your business data into clear decisions. Explore the interactive interface below as a product capability demonstration — connect verified store data to make it yours.</p>
+            <p className="mx-auto mt-4 max-w-lg text-carbon-400">Your digital presence is more than a website — it is your own space. A place where your brand speaks, works, and grows. This is what it means to own your digital estate.</p>
           </Reveal>
           <Reveal>
-            <AnalyticsDashboard />
+            <div className="relative rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-lift bg-carbon-900">
+              <video
+                src="/videos/shopijavid.mp4"
+                poster="/images/image.png"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                className="w-full aspect-video object-cover"
+              />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -458,43 +481,38 @@ export default function HomePage() {
             <p className="mx-auto mt-4 max-w-lg text-carbon-400">From ecommerce development to marketing, business services, creative media, and strategy — organized by category.</p>
           </Reveal>
 
-          <Reveal className="mb-8">
-            <div className="flex flex-wrap justify-center gap-2">
-              {filterOptions.map(f => (
-                <button key={f} onClick={() => setServiceFilter(f)} className={`chip transition ${serviceFilter === f ? 'bg-amber-500 text-white' : 'bg-carbon-900 text-carbon-400 ring-1 ring-white/10 hover:text-white'}`}>{f}</button>
-              ))}
-            </div>
-          </Reveal>
-
-          <div className="space-y-10">
-            {filteredCategories.map((cat, ci) => (
-              <Reveal key={cat.id} delay={ci * 100}>
+          {/* Show only Ecommerce & Store Development (4 services) with See More */}
+          {(() => {
+            const ecommerceCat = SERVICE_CATEGORIES.find(c => c.id === 'ecommerce');
+            if (!ecommerceCat) return null;
+            const visibleServices = ecommerceCat.services.slice(0, 4);
+            return (
+              <Reveal>
                 <div>
                   <div className="flex items-center gap-3 mb-5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/15 text-amber-500"><Icon name={cat.icon} size={20} /></div>
-                    <h3 className="font-serif text-2xl font-semibold text-white">{cat.name}</h3>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/15 text-amber-500"><Icon name={ecommerceCat.icon} size={20} /></div>
+                    <h3 className="font-serif text-2xl font-semibold text-white">{ecommerceCat.name}</h3>
                   </div>
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {cat.services.map((s) => (
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {visibleServices.map((s) => (
                       <div key={s.name} className="group card-dark p-5 transition-all hover:-translate-y-1 hover:ring-amber-500/20 hover:shadow-lift">
                         <div className="flex items-start gap-3">
                           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-carbon-800 text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-colors"><Icon name={s.icon} size={16} /></div>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-semibold text-white text-sm">{s.name}</h4>
-                            <p className="mt-1 text-xs text-carbon-400 leading-relaxed">{s.desc}</p>
+                            <p className="mt-1 text-xs text-carbon-400 leading-relaxed line-clamp-2">{s.desc}</p>
                           </div>
                         </div>
-                        <button onClick={() => navigate('/services')} className="mt-3 text-[11px] font-semibold text-amber-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Learn More <ChevronRight size={11} /></button>
                       </div>
                     ))}
                   </div>
                 </div>
               </Reveal>
-            ))}
-          </div>
+            );
+          })()}
 
-          <div className="mt-10 text-center">
-            <button onClick={() => navigate('/services')} className="btn-amber">View All Services <ArrowRight size={16} /></button>
+          <div className="mt-6 text-center">
+            <button onClick={() => navigate('/services')} className="btn-outline-amber">See More — View All Services <ArrowRight size={16} /></button>
           </div>
         </div>
       </section>
@@ -670,43 +688,68 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ ABOUT PREVIEW ═══ */}
-      <section className="section bg-forest-950 relative overflow-hidden">
-        <div className="absolute inset-0 noise opacity-5" />
-        <div className="absolute -right-32 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-forest-700/15 blur-3xl" />
+      {/* ═══ ABOUT PREVIEW — Beyond the Store with provided image ═══ */}
+      <section className="section bg-carbon-950 relative overflow-hidden" ref={beyondRef}>
+        <div className="absolute inset-0 grid-tech opacity-30" />
+        <div className="absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-electric-600/10 blur-3xl" />
+        <div className="absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-cyan-500/8 blur-3xl" />
         <div className="container-page relative">
           <Reveal>
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
-                <span className="eyebrow-forest">Beyond the Store</span>
+                <span className="eyebrow-cyan">Beyond the Store</span>
                 <h2 className="mt-4 font-serif text-4xl font-semibold text-white sm:text-5xl">We don't believe a store<br />is only about how it looks</h2>
                 <p className="mt-5 text-carbon-300 leading-relaxed">A beautiful store is valuable, but customers must also discover the product, understand the product, trust the brand, interact with the store, and ultimately take action. Our approach considers every layer: store, product, brand, customer, marketing, promotion, experience, and growth.</p>
-                <p className="mt-4 text-carbon-300 leading-relaxed">Founded in {FOUNDED_YEAR} by Jacob David, Official Shopijavid was built on one principle: <span className="text-amber-500 font-semibold">"All That Matters Is Result."</span></p>
+                <p className="mt-4 text-carbon-300 leading-relaxed">Founded in {FOUNDED_YEAR} by Jacob David, Official Shopijavid was built on one principle: <span className="cyan-text">"All That Matters Is Result."</span></p>
+
+                {/* Animated journey flow */}
+                <div className="mt-6 flex flex-wrap items-center gap-2">
+                  {['Product', 'Brand', 'Store', 'Marketing', 'Experience', 'Analytics', 'Growth'].map((step, i) => (
+                    <div key={step} className="flex items-center gap-2">
+                      <span className="chip bg-electric-600/15 text-electric-300 ring-1 ring-electric-500/20 text-[10px]">{step}</span>
+                      {i < 6 && <ArrowRight size={12} className="text-cyan-500/50" />}
+                    </div>
+                  ))}
+                </div>
+
                 <div className="mt-7 flex flex-wrap gap-3">
-                  <button onClick={() => navigate('/portfolio')} className="btn-forest">Learn More About Us</button>
+                  <button onClick={() => navigate('/portfolio')} className="btn-amber">Learn More About Us</button>
                   <button onClick={() => navigate('/team')} className="btn-ghost">Meet the Team</button>
                 </div>
               </div>
-              <div className="relative flex items-center justify-center min-h-[300px]">
-                <div className="relative">
-                  <div className="relative z-10 flex h-28 w-28 sm:h-32 sm:w-32 items-center justify-center rounded-full bg-amber-500 text-white font-serif text-sm font-bold text-center shadow-amber">Official<br />Shopijavid</div>
-                  {['STORE', 'MARKETING', 'BRANDING', 'TECHNOLOGY', 'CREATIVE', 'BUSINESS', 'STRATEGY'].map((label, i) => {
-                    const angle = (i / 7) * Math.PI * 2;
-                    const r = 130;
-                    const x = Math.cos(angle) * r;
-                    const y = Math.sin(angle) * r;
-                    return (
-                      <div key={label} className="absolute flex h-16 w-16 items-center justify-center rounded-xl bg-carbon-900 ring-1 ring-white/15 text-[10px] font-semibold text-white text-center transition-all hover:bg-forest-600 hover:ring-forest-500" style={{ left: '50%', top: '50%', transform: `translate(-50%, -50%) translate(${x}px, ${y}px)` }}>{label}</div>
-                    );
-                  })}
-                  <svg className="absolute inset-0 -m-16 pointer-events-none" style={{ width: 'calc(100% + 128px)', height: 'calc(100% + 128px)' }}>
-                    {Array.from({ length: 7 }).map((_, i) => {
-                      const angle = (i / 7) * Math.PI * 2;
-                      const cx = 144 + Math.cos(angle) * 130;
-                      const cy = 144 + Math.sin(angle) * 130;
-                      return <line key={i} x1="144" y1="144" x2={cx} y2={cy} stroke="rgba(16,185,129,0.15)" strokeWidth="1" />;
-                    })}
-                  </svg>
+
+              {/* Provided image with parallax + floating animation */}
+              <div className="relative">
+                <div
+                  className="relative rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-lift parallax-img"
+                  style={{ transform: `translateY(${beyondParallax}px)` }}
+                >
+                  <img
+                    src="/images/image.png"
+                    alt="Official Shopijavid digital commerce showcase"
+                    className="w-full h-auto object-cover animate-float"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-carbon-950/40 via-transparent to-transparent pointer-events-none" />
+                  {/* Floating tech accent cards */}
+                  <div className="absolute top-4 right-4 card-glass px-3 py-2 animate-bounce-in">
+                    <div className="flex items-center gap-2">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-electric-500/20 text-electric-400"><TrendingUp size={14} /></div>
+                      <div>
+                        <p className="text-[9px] text-carbon-400 uppercase tracking-wider">Growth</p>
+                        <p className="text-xs font-semibold text-white">Data-Driven</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-4 left-4 card-glass px-3 py-2 animate-bounce-in" style={{ animationDelay: '0.2s' }}>
+                    <div className="flex items-center gap-2">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-500/20 text-cyan-400"><Store size={14} /></div>
+                      <div>
+                        <p className="text-[9px] text-carbon-400 uppercase tracking-wider">Commerce</p>
+                        <p className="text-xs font-semibold text-white">Multi-Platform</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

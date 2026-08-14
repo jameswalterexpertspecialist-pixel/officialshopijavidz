@@ -108,7 +108,7 @@ body.accent-gold {
   .btn-sm { @apply px-5 py-2.5 text-xs; }
 
   /* ── Cards ── */
-  .card-dark   { @apply rounded-2xl bg-carbon-800 ring-1 ring-white/8; }
+  .card-dark   { @apply rounded-2xl bg-carbon-800 ring-1 ring-white/10; }
   .card-light  { @apply rounded-2xl bg-white ring-1 ring-slate-200 shadow-card; }
   .card-forest { @apply rounded-2xl bg-forest-950 ring-1 ring-forest-700/40; }
   .card-glass  { @apply rounded-2xl backdrop-blur-xl ring-1 ring-white/10; background: rgba(15,23,42,0.6); }

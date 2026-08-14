@@ -1,8 +1,7 @@
 import { useState, useCallback } from 'react';
 import {
-  ShoppingCart, X, Search, Star, Heart, ChevronRight, Plus, Minus,
-  Check, ArrowRight, Menu, SlidersHorizontal, Tag, Truck, Shield, RotateCcw,
-  Filter, LayoutGrid, List, ChevronDown, Eye,
+  ShoppingCart, X, Search, Star, Heart, Plus, Minus,
+  Check, ArrowRight, Filter, Truck, Shield, RotateCcw,
 } from 'lucide-react';
 
 // ─── Shared types ─────────────────────────────────────────────────────
