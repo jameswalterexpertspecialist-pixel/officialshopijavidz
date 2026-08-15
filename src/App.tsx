@@ -12,6 +12,7 @@ import PricingPage from './pages/PricingPage';
 import PlatformsPage from './pages/PlatformsPage';
 import GigsPage from './pages/GigsPage';
 import GigDetailPage from './pages/GigDetailPage';
+import GrowthPage from './pages/GrowthPage';
 import BlogPage from './pages/BlogPage';
 import BlogArticlePage from './pages/BlogArticlePage';
 import ContactPage from './pages/ContactPage';
@@ -32,6 +33,7 @@ function Routes() {
   else if (segments[0] === 'services') page = <ServicesPage />;
   else if (segments[0] === 'pricing') page = <PricingPage />;
   else if (segments[0] === 'platforms') page = <PlatformsPage />;
+  else if (segments[0] === 'growth') page = <GrowthPage />;
   else if (segments[0] === 'gigs' && !segments[1]) page = <GigsPage />;
   else if (segments[0] === 'gigs' && segments[1]) page = <GigDetailPage id={segments[1]} />;
   else if (segments[0] === 'blog' && !segments[1]) page = <BlogPage />;
