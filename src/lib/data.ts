@@ -51,25 +51,28 @@ export const SERVICES = [
 ];
 
 export const GIGS = [
-  { id: 'video-animation', title: 'Video Animation', img: 'https://images.pexels.com/photos/3389957/pexels-photo-3389957.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '5 days', desc: 'Custom animated video creation with motion graphics, visual effects, brand logo integration, text animations, transitions, background music, and product showcase. Multiple video formats for different platforms.', price: 400, rating: 4.9, reviews: 47 },
-  { id: 'store-design', title: 'Store Design', img: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '7 days', desc: 'Complete store setup, homepage customization, collection and product page setup, mobile responsiveness, navigation and menu configuration, brand color implementation, and essential pages setup.', price: 300, rating: 5.0, reviews: 62 },
-  { id: 'product-research', title: 'Product Research', img: 'https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '3 days', desc: 'Market trend analysis, competitor research, product demand evaluation, supplier recommendations, and product opportunity report. Identify products with strong sales potential and market demand.', price: 250, rating: 4.8, reviews: 38 },
-  { id: 'book-promotion', title: 'Book Promotion', img: 'https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '10 days', desc: 'Promotion strategy development, audience targeting, social media promotion, marketing recommendations, and author branding support. Focus on book, storyline, author brand, or upcoming launches.', price: 300, rating: 4.9, reviews: 24 },
-  { id: 'outsourcing', title: 'Outsourcing Assistance', img: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '14 days', desc: 'Task assessment, service provider recommendations, project coordination support, workflow planning, and business growth consultation. Identify what to outsource and how it improves productivity.', price: 250, rating: 4.7, reviews: 31 },
-  { id: 'brand-cloning', title: 'Brand Cloning', img: 'https://images.pexels.com/photos/196645/pexels-photo-196645.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '7 days', desc: 'Brand structure analysis, layout recreation, customer journey replication, design inspiration implementation, and strategic recommendations. Replicate structure and design style while maintaining originality.', price: 400, rating: 4.9, reviews: 19 },
-  { id: 'video-editing', title: 'Video Editing', img: 'https://images.pexels.com/photos/2796057/pexels-photo-2796057.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '4 days', desc: 'Video trimming and sequencing, transitions and effects, text overlays, audio enhancement, subtitle integration, and platform optimization. For social media, YouTube, ads, and brand campaigns.', price: 150, rating: 4.8, reviews: 55 },
-  { id: 'social-promotion', title: 'Social Media Promotion', img: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: 'Ongoing', desc: 'Promotion planning, audience targeting, content recommendations, campaign management support, and growth strategy consultation. For product, brand, event, or campaign promotion.', price: 400, rating: 4.9, reviews: 41 },
-  { id: 'resume-writing', title: 'Resume Writing', img: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '3 days', desc: 'Resume writing and formatting, ATS-friendly optimization, professional summary creation, skills enhancement, and experience presentation. For entry-level to executive professionals and career changers.', price: 250, rating: 4.7, reviews: 28 },
-  { id: 'ecommerce-consultation', title: 'Ecommerce Consultation', img: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '1 day', desc: 'Store review, growth recommendations, marketing guidance, product strategy consultation, and conversion improvement suggestions. Practical recommendations tailored to your business goals.', price: 200, rating: 5.0, reviews: 33 },
-  { id: 'website-optimization', title: 'Website Optimization', img: 'https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '5 days', desc: 'Speed improvement recommendations, mobile optimization, user experience enhancements, navigation improvements, and performance review. Make your website easier to use and more effective at converting.', price: 250, rating: 4.8, reviews: 36 },
-  { id: 'account-management', title: 'Account Management', img: 'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: 'Ongoing', desc: 'Regular account monitoring, basic updates and maintenance, performance reviews, customer interaction support, and management recommendations. Monthly retainer for consistent support.', price: 250, rating: 4.9, reviews: 22 },
-  { id: 'brand-strategy', title: 'Digital Brand Strategy', img: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '7 days', desc: 'Brand positioning strategy, audience analysis, competitor analysis, marketing direction, brand messaging development, and growth roadmap. Build a recognizable and trusted brand that supports long-term growth.', price: 500, rating: 5.0, reviews: 44 },
+  { id: 'video-animation', title: 'Video Animation', category: 'Video', platform: 'All Platforms', img: 'https://images.pexels.com/photos/3389957/pexels-photo-3389957.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '5 days', desc: 'Custom animated video creation with motion graphics, visual effects, brand logo integration, text animations, transitions, background music, and product showcase. Multiple video formats for different platforms.', deliverables: ['Motion graphics video', 'Brand logo animation', 'Text animations', 'Background music', 'Multiple formats (MP4, GIF)', '2 revisions'], price: 400, rating: 4.9, reviews: 47 },
+  { id: 'store-design', title: 'Store Design', category: 'Ecommerce', platform: 'Shopify', img: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '7 days', desc: 'Complete store setup, homepage customization, collection and product page setup, mobile responsiveness, navigation and menu configuration, brand color implementation, and essential pages setup.', deliverables: ['Custom store design', 'Homepage setup', 'Product page setup', 'Mobile optimization', 'Navigation menu', 'Essential pages', '2 revisions'], price: 300, rating: 5.0, reviews: 62 },
+  { id: 'product-research', title: 'Product Research', category: 'Research', platform: 'All Platforms', img: 'https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '3 days', desc: 'Market trend analysis, competitor research, product demand evaluation, supplier recommendations, and product opportunity report. Identify products with strong sales potential and market demand.', deliverables: ['Product research report', 'Competitor analysis', 'Demand validation', 'Supplier recommendations', 'Margin analysis'], price: 250, rating: 4.8, reviews: 38 },
+  { id: 'book-promotion', title: 'Book Promotion', category: 'Marketing', platform: 'All Platforms', img: 'https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '10 days', desc: 'Promotion strategy development, audience targeting, social media promotion, marketing recommendations, and author branding support. Focus on book, storyline, author brand, or upcoming launches.', deliverables: ['Promotion strategy', 'Audience targeting plan', 'Social media campaign', 'Author branding guide', 'Marketing recommendations'], price: 300, rating: 4.9, reviews: 24 },
+  { id: 'outsourcing', title: 'Outsourcing Assistance', category: 'Business', platform: 'All Platforms', img: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '14 days', desc: 'Task assessment, service provider recommendations, project coordination support, workflow planning, and business growth consultation. Identify what to outsource and how it improves productivity.', deliverables: ['Task assessment report', 'Outsourcing recommendations', 'Workflow plan', 'Provider shortlist', 'Growth consultation'], price: 250, rating: 4.7, reviews: 31 },
+  { id: 'brand-cloning', title: 'Brand Cloning', category: 'Branding', platform: 'All Platforms', img: 'https://images.pexels.com/photos/196645/pexels-photo-196645.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '7 days', desc: 'Brand structure analysis, layout recreation, customer journey replication, design inspiration implementation, and strategic recommendations. Replicate structure and design style while maintaining originality.', deliverables: ['Brand structure analysis', 'Layout recreation', 'Customer journey map', 'Design recommendations', 'Strategic report'], price: 400, rating: 4.9, reviews: 19 },
+  { id: 'video-editing', title: 'Video Editing', category: 'Video', platform: 'All Platforms', img: 'https://images.pexels.com/photos/2796057/pexels-photo-2796057.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '4 days', desc: 'Video trimming and sequencing, transitions and effects, text overlays, audio enhancement, subtitle integration, and platform optimization. For social media, YouTube, ads, and brand campaigns.', deliverables: ['Edited video', 'Transitions and effects', 'Text overlays', 'Audio enhancement', 'Subtitles', 'Platform-optimized export', '2 revisions'], price: 150, rating: 4.8, reviews: 55 },
+  { id: 'social-promotion', title: 'Social Media Promotion', category: 'Marketing', platform: 'All Platforms', img: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: 'Ongoing', desc: 'Promotion planning, audience targeting, content recommendations, campaign management support, and growth strategy consultation. For product, brand, event, or campaign promotion.', deliverables: ['Promotion plan', 'Audience targeting', 'Content recommendations', 'Campaign management', 'Growth strategy'], price: 400, rating: 4.9, reviews: 41 },
+  { id: 'resume-writing', title: 'Resume Writing', category: 'Business', platform: 'N/A', img: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '3 days', desc: 'Resume writing and formatting, ATS-friendly optimization, professional summary creation, skills enhancement, and experience presentation. For entry-level to executive professionals and career changers.', deliverables: ['ATS-friendly resume', 'Professional summary', 'Skills section', 'Experience formatting', 'Cover letter template', '2 revisions'], price: 250, rating: 4.7, reviews: 28 },
+  { id: 'ecommerce-consultation', title: 'Ecommerce Consultation', category: 'Business', platform: 'All Platforms', img: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '1 day', desc: 'Store review, growth recommendations, marketing guidance, product strategy consultation, and conversion improvement suggestions. Practical recommendations tailored to your business goals.', deliverables: ['Store review report', 'Growth recommendations', 'Marketing guidance', 'Product strategy', 'Conversion suggestions'], price: 200, rating: 5.0, reviews: 33 },
+  { id: 'website-optimization', title: 'Website Optimization', category: 'Ecommerce', platform: 'All Platforms', img: 'https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '5 days', desc: 'Speed improvement recommendations, mobile optimization, user experience enhancements, navigation improvements, and performance review. Make your website easier to use and more effective at converting.', deliverables: ['Speed optimization', 'Mobile optimization', 'UX improvements', 'Navigation fixes', 'Performance report'], price: 250, rating: 4.8, reviews: 36 },
+  { id: 'account-management', title: 'Account Management', category: 'Business', platform: 'All Platforms', img: 'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: 'Ongoing', desc: 'Regular account monitoring, basic updates and maintenance, performance reviews, customer interaction support, and management recommendations. Monthly retainer for consistent support.', deliverables: ['Account monitoring', 'Updates and maintenance', 'Performance reviews', 'Customer support', 'Management recommendations'], price: 250, rating: 4.9, reviews: 22 },
+  { id: 'brand-strategy', title: 'Digital Brand Strategy', category: 'Branding', platform: 'All Platforms', img: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '7 days', desc: 'Brand positioning strategy, audience analysis, competitor analysis, marketing direction, brand messaging development, and growth roadmap. Build a recognizable and trusted brand that supports long-term growth.', deliverables: ['Brand positioning strategy', 'Audience analysis', 'Competitor analysis', 'Brand messaging', 'Growth roadmap'], price: 500, rating: 5.0, reviews: 44 },
+  { id: 'bookkeeping', title: 'Bookkeeping', category: 'Business', platform: 'N/A', img: 'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: 'Ongoing', desc: 'Professional bookkeeping services to keep your business finances organized, accurate, and ready for tax season. Monthly financial reports, expense tracking, and reconciliation.', deliverables: ['Monthly financial reports', 'Expense tracking', 'Bank reconciliation', 'Profit & loss statements', 'Tax preparation support'], price: 200, rating: 4.8, reviews: 18 },
+  { id: 'graphic-design', title: 'Graphic Design', category: 'Design', platform: 'All Platforms', img: 'https://images.pexels.com/photos/196645/pexels-photo-196645.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '5 days', desc: 'Premium graphic design for logos, marketing materials, social media posts, ad creatives, and brand collateral. Professional designs that elevate your visual identity.', deliverables: ['Logo design', 'Marketing materials', 'Social media designs', 'Ad creatives', 'Source files', '3 revisions'], price: 200, rating: 4.9, reviews: 51 },
+  { id: 'seo-optimization', title: 'SEO Optimization', category: 'Marketing', platform: 'All Platforms', img: 'https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=600', delivery: '14 days', desc: 'Technical SEO audit, keyword research, on-page optimization, content strategy, and link building recommendations. Improve your search rankings and drive organic traffic.', deliverables: ['SEO audit report', 'Keyword research', 'On-page optimization', 'Content strategy', 'Link building recommendations'], price: 350, rating: 4.8, reviews: 29 },
 ];
 
 export const PROJECTS = [
   { id: 'all4thegiftofit', name: 'All4thegiftofit', url: 'https://all4thegiftofit.com', img: 'https://images.pexels.com/photos/4498136/pexels-photo-4498136.jpeg?auto=compress&cs=tinysrgb&w=800', industry: 'Wellness & Lifestyle', services: ['Ecommerce Optimization', 'Brand Identity', 'Mobile Optimization'], challenge: 'The store had a high bounce rate and low mobile conversion. Product presentation was inconsistent and the checkout flow had multiple friction points.', strategy: 'We rebuilt the product page structure, optimized images for mobile, streamlined the checkout process, and created a cohesive visual identity across the store.', results: { revenue: '+142%', conversion: '0.9% to 3.2%', bounce: '58% to 31%', mobile: '+89%' }, testimonial: { name: 'Williams', role: 'Founder, All4TheGiftOfFit', text: 'SHOPIJAVID completely transformed our ecommerce experience. The branding felt premium, the store became easier to navigate, and our conversions improved significantly after launch.' } },
   { id: 'lixirmart', name: 'Lixirmart', url: 'https://lixirmart.com', img: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800', industry: 'Ecommerce & Retail', services: ['Shopify Development', 'Store Structure', 'Customer Experience'], challenge: 'Lixirmart needed a complete Shopify build from scratch with premium structure and a customer experience that could compete with established brands.', strategy: 'We designed a custom Shopify theme, built optimized product pages, configured apps for conversion, and implemented a full email automation system.', results: { revenue: '+218%', conversion: '1.2% to 3.8%', bounce: '62% to 28%', mobile: '+112%' }, testimonial: { name: 'Alias', role: 'Owner, Lixirmart', text: 'Working with this brand completely transformed our online presence and sales performance. The store looks premium and our revenue tripled within four months.' } },
-  { id: 'lumara', name: 'Lumara', url: 'https://lumara.com', img: 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=800', industry: 'Luxury Beauty', services: ['Luxury Branding', 'Visual Identity', 'Storefront Design'], challenge: 'Lumara needed a luxury ecommerce brand identity that could justify premium pricing and attract a high-end customer base.', strategy: 'We created a complete luxury visual identity, designed an elegant storefront with premium product presentation, and built a brand voice that resonates with luxury buyers.', results: { revenue: '+186%', conversion: '1.5% to 4.1%', bounce: '54% to 22%', mobile: '+95%' }, testimonial: { name: 'Elena R.', role: 'Creative Director, Lumara', text: 'The level of detail and premium feel they brought to our brand was beyond what we expected. Our store now looks like a luxury house and our AOV increased by 60%.' } },
+  { id: 'lumara', name: 'Lumara', url: 'https://lumara.com', img: '/images/WhatsApp_Image_2026-07-15_at_17.31.14 copy.jpeg', industry: 'Luxury Beauty', services: ['Luxury Branding', 'Visual Identity', 'Storefront Design'], challenge: 'Lumara needed a luxury ecommerce brand identity that could justify premium pricing and attract a high-end customer base.', strategy: 'We created a complete luxury visual identity, designed an elegant storefront with premium product presentation, and built a brand voice that resonates with luxury buyers.', results: { revenue: '+186%', conversion: '1.5% to 4.1%', bounce: '54% to 22%', mobile: '+95%' }, testimonial: { name: 'Elena R.', role: 'Creative Director, Lumara', text: 'The level of detail and premium feel they brought to our brand was beyond what we expected. Our store now looks like a luxury house and our AOV increased by 60%.' } },
   { id: 'esoteric-mafia', name: 'Esoteric Mafia', url: 'https://www.esotericmafia.com', img: 'https://images.pexels.com/photos/996831/pexels-photo-996831.jpeg?auto=compress&cs=tinysrgb&w=800', industry: 'Streetwear & Fashion', services: ['Streetwear Branding', 'Dark Luxury Identity', 'Fashion Conversion'], challenge: 'Esoteric Mafia needed a dark luxury streetwear brand identity with high-impact visual direction that could stand out in the competitive fashion ecommerce space.', strategy: 'We developed a dark luxury visual identity, built a high-impact storefront with fashion-focused conversion design, and created a social media branding system.', results: { revenue: '+165%', conversion: '1.1% to 3.4%', bounce: '60% to 26%', mobile: '+78%' }, testimonial: { name: 'Marcus T.', role: 'Founder, Esoteric Mafia', text: 'They understood our vision immediately. The dark luxury aesthetic they created is exactly what our brand needed. Sales doubled in the first quarter after launch.' } },
 ];
 
@@ -81,10 +84,10 @@ export const TESTIMONIALS = [
 ];
 
 export const TEAM = [
-  { name: 'Jacob David', role: 'Founder & Creative Director', img: FOUNDER_IMG, desc: 'Visionary leader with a deep passion for digital innovation and brand building. Jacob founded SHOPIJAVID in 2020 with a mission to help businesses achieve exceptional online growth through premium branding and measurable results.', email: FOUNDER_EMAIL, whatsapp: FOUNDER_WHATSAPP, telegram: FOUNDER_TELEGRAM, isFounder: true },
-  { name: 'Annie Tife', role: 'Team Technician', img: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400', desc: 'Handles technical implementation across projects. Specializes in store setup, theme customization, and quality assurance testing.', telegram: STAFF_TELEGRAM, isFounder: false },
-  { name: 'Isaac James', role: 'Store Supervisor & Audit Manager', img: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=400', desc: 'Oversees store operations and conducts thorough audits. Ensures every project meets our quality standards before client delivery.', telegram: STAFF_TELEGRAM, isFounder: false },
-  { name: 'Daniel Jerry', role: 'Staff', img: 'https://images.pexels.com/photos/3792575/pexels-photo-3792575.jpeg?auto=compress&cs=tinysrgb&w=400', desc: 'Works across multiple project areas including research, content production, and client communication. Reliable and detail oriented.', telegram: STAFF_TELEGRAM, isFounder: false },
+  { name: 'Jacob David', role: 'Founder & Creative Director', agency: 'Official Shopijavid', img: FOUNDER_IMG, desc: 'Visionary leader with a deep passion for digital innovation and brand building. Jacob founded Official Shopijavid in 2020 with a mission to help businesses achieve exceptional online growth through premium branding and measurable results.', email: FOUNDER_EMAIL, whatsapp: FOUNDER_WHATSAPP, telegram: FOUNDER_TELEGRAM, isFounder: true },
+  { name: 'Daniel Jerry', role: 'Manager & Founder', agency: 'Dante Solution Agency', img: 'https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=400', desc: 'Manages operations and leads strategic project delivery across the agency ecosystem. Brings structure, accountability, and results-driven focus to every engagement.', telegram: STAFF_TELEGRAM, isFounder: true },
+  { name: 'Isaac James', role: 'Founder', agency: 'IJ Tech Solutions', img: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=400', desc: 'Leads technical implementation and store development across platforms. Specializes in Shopify, Wix, and WooCommerce builds with a focus on performance and conversion.', telegram: STAFF_TELEGRAM, isFounder: true },
+  { name: 'Annie Tife', role: 'Team Specialist & Campaign Manager', agency: 'AnnieForge Agency', img: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400', desc: 'Manages campaign execution and team coordination across projects. Specializes in store optimization, listing strategy, product presentation, and promotional campaign management.', telegram: STAFF_TELEGRAM, isFounder: true },
 ];
 
 export const MILESTONES = [
@@ -220,11 +223,85 @@ export const PRICING = [
   { name: 'Enterprise', price: '$3,000', period: 'starting', desc: 'Complete digital growth system for established brands.', features: ['Everything in Growth', 'Full ecommerce branding', 'Advanced conversion optimization', 'Ad creative production', 'Funnel strategy and build', 'Dedicated account manager', 'Unlimited revisions', 'Priority support', 'Advanced analytics'], highlight: false, cta: 'Contact Us' },
 ];
 
+// ─── Categorized Pricing ─────────────────────────────────────────────
+export type PricingCategory = {
+  id: string;
+  name: string;
+  icon: string;
+  services: {
+    name: string;
+    price: string;
+    period: string;
+    features: string[];
+    popular?: boolean;
+  }[];
+};
+
+export const PRICING_CATEGORIES: PricingCategory[] = [
+  {
+    id: 'ecommerce',
+    name: 'Ecommerce & Store Development',
+    icon: 'ShoppingBag',
+    services: [
+      { name: 'Store Design', price: '$300', period: 'starting', features: ['Homepage setup', 'Product page setup', 'Mobile optimization', 'Navigation menu', 'Essential pages', '2 revisions'] },
+      { name: 'Store Redesign', price: '$500', period: 'starting', features: ['Complete redesign', 'Premium theme', 'Conversion optimization', 'Mobile-first design', 'SEO foundations', '2 revisions'], popular: true },
+      { name: 'Store Optimization', price: '$250', period: 'starting', features: ['Speed optimization', 'Conversion audit', 'Checkout optimization', 'Mobile fixes', 'Performance report'] },
+      { name: 'Product Page Optimization', price: '$200', period: 'starting', features: ['Page structure', 'Image optimization', 'Copy improvement', 'Review setup', 'Mobile layout'] },
+    ],
+  },
+  {
+    id: 'marketing',
+    name: 'Marketing & Growth',
+    icon: 'Megaphone',
+    services: [
+      { name: 'Social Media Promotion', price: '$400', period: 'monthly', features: ['Promotion plan', 'Audience targeting', 'Content recommendations', 'Campaign management', 'Growth strategy'] },
+      { name: 'SEO Optimization', price: '$350', period: 'starting', features: ['SEO audit', 'Keyword research', 'On-page optimization', 'Content strategy', 'Link building recommendations'], popular: true },
+      { name: 'Paid Advertising', price: '$500', period: 'monthly', features: ['Campaign setup', 'Creative production', 'Audience research', 'Tracking & attribution', 'Continuous optimization'] },
+      { name: 'Email Marketing', price: '$300', period: 'starting', features: ['Email automation', 'Welcome sequences', 'Cart recovery', 'Newsletter templates', 'A/B testing'] },
+    ],
+  },
+  {
+    id: 'creative',
+    name: 'Creative & Media',
+    icon: 'Palette',
+    services: [
+      { name: 'Video Animation', price: '$400', period: 'starting', features: ['Motion graphics', 'Brand logo animation', 'Text animations', 'Background music', 'Multiple formats', '2 revisions'], popular: true },
+      { name: 'Video Editing', price: '$150', period: 'starting', features: ['Video trimming', 'Transitions & effects', 'Text overlays', 'Audio enhancement', 'Subtitles', '2 revisions'] },
+      { name: 'Graphic Design', price: '$200', period: 'starting', features: ['Logo design', 'Marketing materials', 'Social media designs', 'Ad creatives', 'Source files', '3 revisions'] },
+      { name: 'Brand Strategy', price: '$500', period: 'starting', features: ['Brand positioning', 'Audience analysis', 'Competitor analysis', 'Brand messaging', 'Growth roadmap'] },
+    ],
+  },
+  {
+    id: 'business',
+    name: 'Business & Professional Services',
+    icon: 'Briefcase',
+    services: [
+      { name: 'Resume Writing', price: '$250', period: 'starting', features: ['ATS-friendly resume', 'Professional summary', 'Skills section', 'Experience formatting', 'Cover letter', '2 revisions'] },
+      { name: 'Bookkeeping', price: '$200', period: 'monthly', features: ['Monthly reports', 'Expense tracking', 'Bank reconciliation', 'P&L statements', 'Tax prep support'] },
+      { name: 'Ecommerce Consultation', price: '$200', period: 'session', features: ['Store review', 'Growth recommendations', 'Marketing guidance', 'Product strategy', 'Conversion suggestions'], popular: true },
+      { name: 'Account Management', price: '$250', period: 'monthly', features: ['Account monitoring', 'Updates & maintenance', 'Performance reviews', 'Customer support', 'Management reports'] },
+    ],
+  },
+  {
+    id: 'strategy',
+    name: 'Research & Strategy',
+    icon: 'Compass',
+    services: [
+      { name: 'Product Research', price: '$250', period: 'starting', features: ['Market trend analysis', 'Competitor research', 'Demand validation', 'Supplier recommendations', 'Opportunity report'] },
+      { name: 'Brand Cloning', price: '$400', period: 'starting', features: ['Brand structure analysis', 'Layout recreation', 'Customer journey map', 'Design recommendations', 'Strategic report'] },
+      { name: 'Digital Brand Strategy', price: '$500', period: 'starting', features: ['Brand positioning', 'Audience analysis', 'Competitor analysis', 'Marketing direction', 'Growth roadmap'], popular: true },
+      { name: 'Website Optimization', price: '$250', period: 'starting', features: ['Speed improvements', 'Mobile optimization', 'UX enhancements', 'Navigation fixes', 'Performance report'] },
+    ],
+  },
+];
+
 export const SLIDES = [
-  { img: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200', title: 'Modern Workspaces', sub: 'Where strategy meets execution' },
-  { img: 'https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1200', title: 'Premium Workstations', sub: 'Built for performance' },
-  { img: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1200', title: 'Growth Analytics', sub: 'Data that drives decisions' },
-  { img: 'https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1200', title: 'Continuous Learning', sub: 'Knowledge that builds brands' },
+  { img: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1600', title: 'Ecommerce Store Development', sub: 'Custom storefronts built for speed, conversion, and premium customer experience', cta: 'Explore Platforms', to: '/platforms' },
+  { img: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=1600', title: 'Marketing & Brand Promotion', sub: 'Full-funnel campaigns across Meta, TikTok, Google, and email that drive measurable revenue', cta: 'View Services', to: '/services' },
+  { img: 'https://images.pexels.com/photos/4498136/pexels-photo-4498136.jpeg?auto=compress&cs=tinysrgb&w=1600', title: 'Multi-Platform Commerce', sub: 'Shopify, Wix, WooCommerce, Etsy, and Amazon — we work across every major platform', cta: 'See Demos', to: '/platforms' },
+  { img: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1600', title: 'Business Solutions', sub: 'Bookkeeping, consultation, automation, and professional services that keep your business running', cta: 'View Pricing', to: '/pricing' },
+  { img: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1600', title: 'Growth & Analytics', sub: 'Data-driven dashboards that track revenue, orders, conversion, and visitor growth', cta: 'See Dashboard', to: '/platforms' },
+  { img: 'https://images.pexels.com/photos/3389957/pexels-photo-3389957.jpeg?auto=compress&cs=tinysrgb&w=1600', title: 'Creative & Media', sub: 'Video animation, editing, graphic design, and content creation that elevates your brand', cta: 'Browse Gigs', to: '/gigs' },
 ];
 
 export const VIDEO_SCRIPT = `In today's world, your digital presence is more than a website. It is your own space. A place where your brand speaks for you, works for you, and grows with you.
@@ -246,4 +323,182 @@ export const WORK_WITH_OPTIONS = [
   'Marketing Team',
   'Full Team Collaboration',
   'Not Sure Yet',
+];
+
+// ─── Commerce Platforms ──────────────────────────────────────────────
+export const PLATFORMS = [
+  {
+    id: 'shopify',
+    name: 'Shopify',
+    tagline: 'Store development & conversion optimization',
+    color: '#96bf48',
+    services: ['Store Development', 'Store Optimization', 'Product Presentation', 'SEO', 'Conversion Optimization', 'Marketing'],
+    desc: 'Custom Shopify stores built for speed, conversion, and premium customer experience.',
+  },
+  {
+    id: 'wix',
+    name: 'Wix',
+    tagline: 'Website development & ecommerce setup',
+    color: '#0c80ef',
+    services: ['Website Development', 'Ecommerce Setup', 'UX/UI Design', 'Optimization', 'Marketing'],
+    desc: 'Professional Wix websites and stores with custom design and seamless user experience.',
+  },
+  {
+    id: 'woocommerce',
+    name: 'WooCommerce',
+    tagline: 'Store development & performance optimization',
+    color: '#7f54b3',
+    services: ['Store Development', 'Product Management', 'SEO', 'Performance Optimization'],
+    desc: 'Powerful WooCommerce stores with flexible product management and SEO foundations.',
+  },
+  {
+    id: 'etsy',
+    name: 'Etsy',
+    tagline: 'Shop optimization & listing strategy',
+    color: '#f56400',
+    services: ['Shop Optimization', 'Listing Strategy', 'Product Presentation', 'Promotion'],
+    desc: 'Etsy shop optimization with listing strategy and product presentation that stands out.',
+  },
+  {
+    id: 'amazon',
+    name: 'Amazon',
+    tagline: 'Listing optimization & brand presentation',
+    color: '#ff9900',
+    services: ['Product Listing Optimization', 'Brand Presentation', 'Store Optimization', 'Marketing'],
+    desc: 'Amazon listing optimization and brand presentation that improves discoverability and conversion.',
+  },
+];
+
+// ─── Platform Marquee ─────────────────────────────────────────────────
+export const MARQUEE_PLATFORMS = [
+  'Shopify', 'Wix', 'WooCommerce', 'Etsy', 'Amazon',
+  'Google', 'Meta', 'Instagram', 'Facebook', 'TikTok', 'YouTube',
+];
+
+// ─── Categorized Services for Services Page ──────────────────────────
+export type ServiceCategory = {
+  id: string;
+  name: string;
+  icon: string;
+  services: { name: string; desc: string; icon: string }[];
+};
+
+export const SERVICE_CATEGORIES: ServiceCategory[] = [
+  {
+    id: 'ecommerce',
+    name: 'Ecommerce & Store Development',
+    icon: 'ShoppingBag',
+    services: [
+      { name: 'Shopify Store Development', desc: 'Custom Shopify stores built for speed, conversion, and premium experience.', icon: 'ShoppingCart' },
+      { name: 'Shopify Store Optimization', desc: 'Audit and optimize your existing Shopify store for higher conversion rates.', icon: 'TrendingUp' },
+      { name: 'Wix Store Development', desc: 'Professional Wix websites and ecommerce stores with custom design.', icon: 'Globe' },
+      { name: 'WooCommerce Development', desc: 'Flexible WooCommerce stores with SEO foundations and performance tuning.', icon: 'Package' },
+      { name: 'Etsy Store Optimization', desc: 'Listing strategy, shop optimization, and product presentation for Etsy.', icon: 'Tag' },
+      { name: 'Amazon Store Optimization', desc: 'Listing optimization and brand presentation for Amazon marketplace.', icon: 'Box' },
+      { name: 'Store Setup', desc: 'Complete store setup from platform selection to product upload and configuration.', icon: 'Settings' },
+      { name: 'Store Redesign', desc: 'Redesign your existing store with a premium look that converts better.', icon: 'RefreshCw' },
+      { name: 'Product Page Optimization', desc: 'Optimize product pages for maximum conversion with better presentation.', icon: 'FileText' },
+      { name: 'Conversion Rate Optimization', desc: 'Data-driven CRO to turn more visitors into paying customers.', icon: 'Target' },
+      { name: 'Mobile Store Optimization', desc: 'Ensure your store works flawlessly on every mobile device.', icon: 'Smartphone' },
+      { name: 'Checkout Optimization', desc: 'Streamline checkout flow to reduce abandonment and increase completion.', icon: 'CreditCard' },
+      { name: 'Product Research', desc: 'Data-driven product research to identify winning products and opportunities.', icon: 'Search' },
+      { name: 'Marketplace Optimization', desc: 'Optimize your presence across multiple marketplaces for maximum visibility.', icon: 'Store' },
+      { name: 'Customer Experience Optimization', desc: 'Improve the end-to-end customer journey from discovery to purchase.', icon: 'Heart' },
+    ],
+  },
+  {
+    id: 'marketing',
+    name: 'Marketing & Growth',
+    icon: 'Megaphone',
+    services: [
+      { name: 'Brand Promotion', desc: 'Strategic brand promotion campaigns that put your brand in front of the right audience.', icon: 'Sparkles' },
+      { name: 'Social Media Marketing', desc: 'Full social media marketing across Instagram, TikTok, Facebook, and LinkedIn.', icon: 'Share2' },
+      { name: 'Paid Advertising', desc: 'Performance-focused paid ad campaigns on Meta, TikTok, Google, and YouTube.', icon: 'Megaphone' },
+      { name: 'SEO', desc: 'Technical and content SEO that ranks your brand and drives organic traffic.', icon: 'Search' },
+      { name: 'Email Marketing', desc: 'Email automation sequences that drive repeat purchases and recover lost sales.', icon: 'Mail' },
+      { name: 'Content Marketing', desc: 'Content strategy and creation that attracts qualified leads and builds authority.', icon: 'PenTool' },
+      { name: 'Product Promotion', desc: 'Strategic product promotion campaigns that drive targeted sales.', icon: 'Tag' },
+      { name: 'Video Marketing', desc: 'Video content marketing for higher engagement across all platforms.', icon: 'Video' },
+      { name: 'Retargeting', desc: 'Retargeting systems that recover lost sales and bring visitors back.', icon: 'RotateCcw' },
+      { name: 'Customer Acquisition', desc: 'Data-driven customer acquisition strategies that lower CAC over time.', icon: 'UserPlus' },
+      { name: 'Campaign Management', desc: 'Full campaign management from strategy to execution to optimization.', icon: 'Calendar' },
+      { name: 'Digital Marketing Strategy', desc: 'Comprehensive digital marketing strategy tailored to your business goals.', icon: 'Compass' },
+    ],
+  },
+  {
+    id: 'business',
+    name: 'Business & Professional Services',
+    icon: 'Briefcase',
+    services: [
+      { name: 'Bookkeeping', desc: 'Professional bookkeeping services to keep your business finances organized and accurate.', icon: 'Calculator' },
+      { name: 'Resume Writing', desc: 'ATS-friendly resume writing that helps you stand out and land interviews.', icon: 'FileText' },
+      { name: 'Business Documentation', desc: 'Professional business documentation, policies, and operational materials.', icon: 'Folder' },
+      { name: 'Ecommerce Consultation', desc: 'Expert ecommerce consultation with practical recommendations for your store.', icon: 'MessageSquare' },
+      { name: 'Business Consultation', desc: 'Strategic business consultation to help you identify opportunities and overcome challenges.', icon: 'Lightbulb' },
+      { name: 'Account Management', desc: 'Ongoing account management with regular monitoring, updates, and performance reviews.', icon: 'Users' },
+      { name: 'Outsourcing Assistance', desc: 'Identify what to outsource and manage service providers for better productivity.', icon: 'Network' },
+      { name: 'Digital Business Strategy', desc: 'Complete digital business strategy that aligns technology with your growth goals.', icon: 'Compass' },
+    ],
+  },
+  {
+    id: 'creative',
+    name: 'Creative & Media',
+    icon: 'Palette',
+    services: [
+      { name: 'Video Animation', desc: 'Cinematic video animation with motion graphics, visual effects, and brand integration.', icon: 'Film' },
+      { name: 'Video Editing', desc: 'Professional video editing for social media, YouTube, ads, and brand campaigns.', icon: 'Scissors' },
+      { name: 'Graphic Design', desc: 'Premium graphic design for branding, marketing, and promotional materials.', icon: 'Palette' },
+      { name: 'Product Promotional Videos', desc: 'Product showcase videos that highlight features and drive purchase decisions.', icon: 'Video' },
+      { name: 'Social Media Creatives', desc: 'Scroll-stopping social media creatives that drive engagement and shares.', icon: 'Image' },
+      { name: 'Brand Identity', desc: 'Complete brand identity systems from logo to typography to visual language.', icon: 'Sparkles' },
+      { name: 'Marketing Creatives', desc: 'Ad creatives, landing page designs, and marketing collateral that converts.', icon: 'Layout' },
+      { name: 'Content Creation', desc: 'Multi-format content creation including photography, video, and copywriting.', icon: 'PenTool' },
+    ],
+  },
+  {
+    id: 'strategy',
+    name: 'Research & Strategy',
+    icon: 'Compass',
+    services: [
+      { name: 'Product Research', desc: 'Deep product research using market data, competitor analysis, and demand validation.', icon: 'Search' },
+      { name: 'Competitor Research', desc: 'Comprehensive competitor analysis to identify gaps and opportunities in your market.', icon: 'Users' },
+      { name: 'Market Research', desc: 'Market research that helps you understand your audience, demand, and positioning.', icon: 'Globe' },
+      { name: 'Digital Branding Strategy', desc: 'Strategic digital branding that builds recognition and trust across channels.', icon: 'Sparkles' },
+      { name: 'Marketplace Strategy', desc: 'Marketplace-specific strategy for Shopify, Etsy, Amazon, and WooCommerce.', icon: 'Store' },
+      { name: 'Customer Experience Analysis', desc: 'Analyze and improve every touchpoint in your customer journey.', icon: 'Heart' },
+      { name: 'Growth Strategy', desc: 'Data-driven growth strategy that identifies your highest-impact opportunities.', icon: 'TrendingUp' },
+      { name: 'Conversion Strategy', desc: 'Strategic conversion optimization plan to turn more visitors into customers.', icon: 'Target' },
+    ],
+  },
+];
+
+// ─── Process Steps ───────────────────────────────────────────────────
+export const PROCESS_STEPS = [
+  { num: '01', title: 'Discover', desc: 'Understand the business, product, audience, and objectives.', icon: 'Search' },
+  { num: '02', title: 'Evaluate', desc: 'Identify opportunities across the store, brand, customer experience, and marketing.', icon: 'ClipboardCheck' },
+  { num: '03', title: 'Build', desc: 'Develop or improve the systems required for growth.', icon: 'Hammer' },
+  { num: '04', title: 'Promote', desc: 'Help the product reach the right audience through strategic promotion.', icon: 'Megaphone' },
+  { num: '05', title: 'Optimize', desc: 'Monitor performance and identify opportunities for improvement.', icon: 'TrendingUp' },
+  { num: '06', title: 'Results', desc: 'Focus on measurable business progress and outcomes.', icon: 'Award' },
+];
+
+// ─── Trust Cards ─────────────────────────────────────────────────────
+export const TRUST_CARDS = [
+  { title: 'Better Store Experience', desc: 'Make it easier for customers to understand and interact with products.', icon: 'Store' },
+  { title: 'Stronger Brand Presence', desc: 'Build a consistent and recognizable digital identity.', icon: 'Sparkles' },
+  { title: 'Effective Promotion', desc: 'Help products reach relevant audiences through strategic marketing.', icon: 'Megaphone' },
+  { title: 'Better Customer Experience', desc: 'Reduce friction between discovery and purchase.', icon: 'Heart' },
+  { title: 'Smarter Growth Strategy', desc: 'Use performance insights to identify opportunities.', icon: 'TrendingUp' },
+];
+
+// ─── Result Journey ──────────────────────────────────────────────────
+export const RESULT_JOURNEY = [
+  { label: 'Dream', desc: 'Every merchant starts with a dream.' },
+  { label: 'Product', desc: 'A product to offer the world.' },
+  { label: 'Brand', desc: 'A brand that represents their vision.' },
+  { label: 'Store', desc: 'A store to showcase what they built.' },
+  { label: 'Promotion', desc: 'Reaching the right audience.' },
+  { label: 'Customers', desc: 'People discovering and trusting the brand.' },
+  { label: 'Sales', desc: 'Purchases that sustain the business.' },
+  { label: 'Growth', desc: 'The dream becoming reality.' },
 ];
