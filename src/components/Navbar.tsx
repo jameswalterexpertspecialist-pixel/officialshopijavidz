@@ -9,7 +9,6 @@ const links = [
   { label: 'Platforms', to: '/platforms' },
   { label: 'Pricing', to: '/pricing' },
   { label: 'Gigs', to: '/gigs' },
-  { label: 'Growth', to: '/growth' },
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'Team', to: '/team' },
   { label: 'Blog', to: '/blog' },

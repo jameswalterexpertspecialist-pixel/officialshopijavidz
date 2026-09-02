@@ -453,6 +453,9 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       { name: 'Brand Identity', desc: 'Complete brand identity systems from logo to typography to visual language.', icon: 'Sparkles' },
       { name: 'Marketing Creatives', desc: 'Ad creatives, landing page designs, and marketing collateral that converts.', icon: 'Layout' },
       { name: 'Content Creation', desc: 'Multi-format content creation including photography, video, and copywriting.', icon: 'PenTool' },
+      { name: 'UGC Content', desc: 'User-generated content created for social media, paid ads, and brand authenticity.', icon: 'Video' },
+      { name: 'Short-Form Video Ads', desc: 'Scroll-stopping short-form ads for TikTok, Instagram Reels, YouTube Shorts, and Meta.', icon: 'Film' },
+      { name: '3D Product Animation', desc: '3D product animation that showcases features from every angle and drives purchase decisions.', icon: 'Box' },
     ],
   },
   {
