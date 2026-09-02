@@ -16,7 +16,6 @@ import {
 } from '../lib/data';
 import InteractiveGlobe from '../components/InteractiveGlobe';
 import EcosystemDiagram from '../components/EcosystemDiagram';
-import { Film, Video, Sparkles, Play } from 'lucide-react';
 
 // ─── Icon resolver ───────────────────────────────────────────────────
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -220,7 +219,7 @@ export default function HomePage() {
               </p>
             </div>
             <div className="relative flex items-center justify-center">
-              <InteractiveGlobe size={440} />
+              <EcosystemDiagram size={420} />
             </div>
           </div>
         </div>
@@ -294,8 +293,8 @@ export default function HomePage() {
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/15 text-amber-500"><Icon name={cat.icon} size={20} /></div>
                     <h3 className="font-serif text-2xl font-semibold text-white">{cat.name}</h3>
                   </div>
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    {cat.services.slice(0, 4).map((s) => (
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {cat.services.map((s) => (
                       <div key={s.name} className="group card-dark p-5 transition-all hover:-translate-y-1 hover:ring-amber-500/20 hover:shadow-lift">
                         <div className="flex items-start gap-3">
                           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-carbon-800 text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-colors"><Icon name={s.icon} size={16} /></div>
@@ -304,62 +303,17 @@ export default function HomePage() {
                             <p className="mt-1 text-xs text-carbon-400 leading-relaxed">{s.desc}</p>
                           </div>
                         </div>
+                        <button onClick={() => navigate('/services')} className="mt-3 text-[11px] font-semibold text-amber-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Learn More <ChevronRight size={11} /></button>
                       </div>
                     ))}
                   </div>
-                  {cat.services.length > 4 && (
-                    <div className="mt-4 text-center">
-                      <button onClick={() => navigate('/services')} className="btn-outline-amber btn-sm">View All {cat.name} <ArrowRight size={14} /></button>
-                    </div>
-                  )}
                 </div>
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ═══ PRODUCT ANIMATION & UGC ═══ */}
-      <section className="section bg-carbon-900">
-        <div className="container-page">
-          <Reveal className="mb-10 text-center">
-            <span className="eyebrow">Product Animation & UGC</span>
-            <h2 className="mt-4 section-title">Content That Sells</h2>
-            <p className="mx-auto mt-4 max-w-lg text-carbon-400">We create product animation, 3D product showcases, UGC content, and short-form promotional videos designed to drive attention, engagement, and sales across every platform.</p>
-          </Reveal>
-
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-            <Reveal>
-              <div className="ugc-video-frame aspect-[9/16] max-h-[520px] mx-auto" style={{ maxWidth: '300px' }}>
-                <video autoPlay muted loop playsInline className="h-full w-full object-cover">
-                  <source src="/videos/javid_4.mp4" type="video/mp4" />
-                </video>
-                <div className="ugc-video-overlay" />
-                <div className="ugc-video-badge"><span className="live-dot" /> <span>Sample Reel</span></div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={150}>
-              <div className="space-y-4">
-                {[
-                  { icon: Film, title: 'Product Animation', desc: 'Cinematic product animation with motion graphics and visual effects that showcase your product from every angle.' },
-                  { icon: Video, title: '3D Product Animation', desc: '3D renders and animation that highlight features, materials, and craftsmanship in stunning detail.' },
-                  { icon: Sparkles, title: 'UGC Content', desc: 'User-generated content created for social media, paid ads, and brand authenticity that builds trust.' },
-                  { icon: Play, title: 'Short-Form Video Ads', desc: 'Scroll-stopping short-form ads for TikTok, Instagram Reels, YouTube Shorts, and Meta campaigns.' },
-                ].map((item, i) => (
-                  <Reveal key={item.title} delay={i * 80}>
-                    <div className="group card-dark p-5 flex items-start gap-4 transition-all hover:-translate-y-0.5 hover:ring-amber-500/20">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/15 text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-colors"><item.icon size={20} /></div>
-                      <div>
-                        <h3 className="font-serif text-lg font-semibold text-white">{item.title}</h3>
-                        <p className="mt-1 text-sm text-carbon-400 leading-relaxed">{item.desc}</p>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-                <button onClick={() => navigate('/contact')} className="btn-amber mt-2">Start a Video Project <ArrowRight size={16} /></button>
-              </div>
-            </Reveal>
+          <div className="mt-10 text-center">
+            <button onClick={() => navigate('/services')} className="btn-amber">View All Services <ArrowRight size={16} /></button>
           </div>
         </div>
       </section>
