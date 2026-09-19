@@ -50,6 +50,7 @@ export default {
         },
       },
       boxShadow: {
+        /* accent-aware versions are handled via CSS vars in index.css */
         amber: '0 0 40px -8px rgba(245,158,11,0.4)',
         forest: '0 0 40px -8px rgba(58,133,96,0.35)',
         card: '0 4px 24px -4px rgba(0,0,0,0.18)',

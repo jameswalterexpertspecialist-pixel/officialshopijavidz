@@ -211,7 +211,7 @@ export default function AIChatbot() {
     <>
       <button
         onClick={() => { if (!open) { setOpen(true); if (messages.length === 0) startChat(); } }}
-        className={`fixed bottom-6 left-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-amber-500 text-carbon-950 shadow-amber transition-all hover:scale-110 ${open ? 'hidden' : 'flex'} animate-pulse-amber`}
+        className={`fixed bottom-6 left-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-amber-500 text-white shadow-amber transition-all hover:scale-110 ${open ? 'hidden' : 'flex'} animate-pulse-amber`}
       >
         <MessageSquare size={26} />
       </button>
@@ -221,7 +221,7 @@ export default function AIChatbot() {
           {/* Header */}
           <div className="flex items-center justify-between border-b border-white/10 bg-carbon-950 px-4 py-3">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-500 text-carbon-950 font-bold text-sm">S</span>
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-500 text-white font-bold text-sm">S</span>
               <div>
                 <p className="text-sm font-semibold text-white">SHOPIJAVID Assistant</p>
                 <p className="text-xs text-forest-400 flex items-center gap-1">
@@ -243,7 +243,7 @@ export default function AIChatbot() {
                 {msg.role === 'system' ? (
                   <div className="w-full rounded-xl bg-amber-500/10 p-3 text-center text-xs text-amber-400 ring-1 ring-amber-500/20">{msg.content}</div>
                 ) : (
-                  <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm ${msg.role === 'user' ? 'bg-amber-500 text-carbon-950' : msg.role === 'agent' ? 'bg-forest-600 text-white' : 'bg-carbon-800 text-white'}`}>
+                  <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm ${msg.role === 'user' ? 'bg-amber-500 text-white' : msg.role === 'agent' ? 'bg-forest-600 text-white' : 'bg-carbon-800 text-white'}`}>
                     {msg.role === 'agent' && msg.sender_name && <p className="text-xs font-semibold text-forest-200 mb-0.5">{msg.sender_name}</p>}
                     {msg.content}
                   </div>
@@ -320,7 +320,7 @@ export default function AIChatbot() {
                   placeholder={agentJoined ? 'Type your message to the agent...' : 'Type your message...'}
                   className="input-dark flex-1 text-sm"
                 />
-                <button onClick={sendMessage} disabled={!input.trim() || typing} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-carbon-950 hover:bg-amber-400 transition disabled:opacity-50">
+                <button onClick={sendMessage} disabled={!input.trim() || typing} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-white hover:bg-amber-400 transition disabled:opacity-50">
                   <Send size={18} />
                 </button>
               </div>
