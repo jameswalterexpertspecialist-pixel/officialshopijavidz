@@ -66,6 +66,34 @@ export default function PortfolioPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
+          BRAND FILM
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="section bg-carbon-950 relative overflow-hidden">
+        <div className="absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-amber-500/8 blur-3xl" />
+        <div className="absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-forest-600/10 blur-3xl" />
+
+        <div className="container-page relative">
+          <Reveal className="mb-10 text-center">
+            <span className="eyebrow">Corporate Brand Film</span>
+            <h2 className="mt-4 font-serif text-4xl sm:text-5xl font-semibold text-white">Premium Digital Commerce,<br />in Motion.</h2>
+            <p className="mx-auto mt-4 max-w-xl text-carbon-400">Experience the Official Shopijavid brand story through our corporate brand animation — a visual statement of our mission, philosophy, and the standard we bring to every engagement.</p>
+          </Reveal>
+
+          <Reveal>
+            <div className="film-frame max-w-4xl mx-auto">
+              <video className="h-full w-full object-cover" autoPlay muted loop playsInline poster="/images/image copy 2.png">
+                <source src="/videos/Shopijavid-Premium-Brand-Introduction-v2_(1).mp4" type="video/mp4" />
+              </video>
+              <div className="film-overlay" />
+              <div className="film-label"><span className="live-dot" /> Official Shopijavid / Corporate Brand Animation</div>
+              <div className="film-statement">Build something<br /><em>worth finding.</em></div>
+              <div className="film-meta"><span>01</span><span>Brand / Vision / Standard</span></div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
           "ALL THAT MATTERS IS RESULT" — Brand Story
       ═══════════════════════════════════════════════════════════════ */}
       <section className="section bg-carbon-950 relative overflow-hidden">

@@ -210,7 +210,12 @@ export default function HomePage() {
               <p className="mx-auto lg:mx-0 mt-6 max-w-xl text-base sm:text-lg text-carbon-300 leading-relaxed">
                 From ecommerce stores and digital branding to marketing, optimization and business solutions — Official Shopijavid helps businesses turn their ideas into stronger digital experiences and measurable growth.
               </p>
-              <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <div className="mt-6 mx-auto lg:mx-0 max-w-md rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-lift bg-carbon-900">
+                <video className="w-full h-auto object-cover" autoPlay muted loop playsInline>
+                  <source src="/videos/Shopijavid-Premium-Brand-Introduction-v2_(1).mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-3">
                 <button onClick={() => navigate('/contact')} className="btn-amber">Start a Project <ArrowRight size={16} /></button>
                 <button onClick={() => navigate('/services')} className="btn-ghost">Explore Our Services</button>
               </div>
