@@ -199,7 +199,7 @@ export default function HomePage() {
         <div className="absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-amber-500/8 blur-3xl" />
 
         <div className="container-page relative py-12 lg:py-0">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className="text-center lg:text-left">
               <span className="eyebrow animate-fade-in">Premium Digital Commerce Agency</span>
               <h1 className="mt-5 font-serif text-4xl font-semibold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
@@ -210,12 +210,7 @@ export default function HomePage() {
               <p className="mx-auto lg:mx-0 mt-6 max-w-xl text-base sm:text-lg text-carbon-300 leading-relaxed">
                 From ecommerce stores and digital branding to marketing, optimization and business solutions — Official Shopijavid helps businesses turn their ideas into stronger digital experiences and measurable growth.
               </p>
-              <div className="mt-6 mx-auto lg:mx-0 max-w-md rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-lift bg-carbon-900">
-                <video className="w-full h-auto object-cover" autoPlay muted loop playsInline>
-                  <source src="/videos/Shopijavid-Premium-Brand-Introduction-v2_(1).mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <div className="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-3">
                 <button onClick={() => navigate('/contact')} className="btn-amber">Start a Project <ArrowRight size={16} /></button>
                 <button onClick={() => navigate('/services')} className="btn-ghost">Explore Our Services</button>
               </div>
@@ -223,8 +218,14 @@ export default function HomePage() {
                 One ecosystem. Multiple solutions. <span className="text-amber-500">One objective — results.</span>
               </p>
             </div>
-            <div className="relative flex items-center justify-center">
-              <EcosystemDiagram size={420} />
+            <div className="relative">
+              <div className="cinematic-video-wrap">
+                <video className="cinematic-video" autoPlay muted loop playsInline poster="/images/image copy 2.png">
+                  <source src="/videos/Shopijavid-Premium-Brand-Introduction-v2_(1).mp4" type="video/mp4" />
+                </video>
+                <div className="cinematic-video-overlay" />
+                <div className="cinematic-video-badge"><span className="live-dot" /> Official Shopijavid</div>
+              </div>
             </div>
           </div>
         </div>
@@ -294,13 +295,18 @@ export default function HomePage() {
             {filteredCategories.map((cat, ci) => (
               <Reveal key={cat.id} delay={ci * 100}>
                 <div>
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/15 text-amber-500"><Icon name={cat.icon} size={20} /></div>
-                    <h3 className="font-serif text-2xl font-semibold text-white">{cat.name}</h3>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/15 text-amber-500"><Icon name={cat.icon} size={20} /></div>
+                      <h3 className="font-serif text-2xl font-semibold text-white">{cat.name}</h3>
+                    </div>
+                    <button onClick={() => navigate('/services')} className="text-xs font-semibold text-amber-500 hover:text-amber-400 flex items-center gap-1 whitespace-nowrap">
+                      Explore All <ArrowRight size={12} />
+                    </button>
                   </div>
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {cat.services.map((s) => (
-                      <div key={s.name} className="group card-dark p-5 transition-all hover:-translate-y-1 hover:ring-amber-500/20 hover:shadow-lift">
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {cat.services.slice(0, 4).map((s) => (
+                      <div key={s.name} className="group card-dark p-5 transition-all hover:-translate-y-1 hover:ring-amber-500/20 hover:shadow-lift h-full">
                         <div className="flex items-start gap-3">
                           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-carbon-800 text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-colors"><Icon name={s.icon} size={16} /></div>
                           <div className="flex-1 min-w-0">

@@ -38,7 +38,7 @@ export default function Navbar() {
       <nav className="container-page flex items-center justify-between gap-4 py-3">
         <button onClick={() => go('/')} className="flex items-center gap-2.5 shrink-0">
           <img src="/images/shopi.jpeg" alt="SHOPIJAVID" className="h-10 w-10 rounded-full object-cover ring-1 ring-white/20 shrink-0" />
-          <span className="font-serif text-lg font-semibold tracking-widest text-white whitespace-nowrap">Official Shopijavid</span>
+          <span className="font-serif text-lg font-semibold tracking-widest whitespace-nowrap bg-gradient-to-b from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(217,167,83,0.35)]">Official Shopijavid</span>
         </button>
 
         <div className="hidden lg:flex items-center gap-0.5">
