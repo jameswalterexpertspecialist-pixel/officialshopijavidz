@@ -15,7 +15,6 @@ import {
   SLIDES, PRICING,
 } from '../lib/data';
 import InteractiveGlobe from '../components/InteractiveGlobe';
-import EcosystemDiagram from '../components/EcosystemDiagram';
 
 // ─── Icon resolver ───────────────────────────────────────────────────
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
