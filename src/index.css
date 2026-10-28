@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --accent-50: #e9fbff;
-  --accent-100: #c9f4fb;
-  --accent-200: #91e8f5;
-  --accent-300: #55d8ec;
-  --accent-400: #22c7e3;
-  --accent-500: #0ea5d9;
-  --accent-600: #087fb9;
-  --accent-700: #096493;
-  --accent-800: #0b4b6e;
-  --accent-900: #0d3853;
-  --accent-glow: rgba(14, 165, 217, .42);
-  --accent-grid: rgba(34, 199, 227, .075);
-  --accent-hi: #65e6f4;
+  --accent-50: #fffaf0;
+  --accent-100: #f5e8c9;
+  --accent-200: #ead39d;
+  --accent-300: #d5c4a1;
+  --accent-400: #d1ad68;
+  --accent-500: #b98b3e;
+  --accent-600: #8d6728;
+  --accent-700: #6d4e20;
+  --accent-800: #4a361b;
+  --accent-900: #302516;
+  --accent-glow: rgba(185, 139, 62, .32);
+  --accent-grid: rgba(213, 196, 161, .06);
+  --accent-hi: #f1d99c;
 }
 
 body.accent-blue {
@@ -29,10 +29,12 @@ body.accent-blue {
 
 @layer base {
   html { scroll-behavior: smooth; }
-  body { @apply bg-carbon-950 text-white font-sans antialiased; font-feature-settings: "ss01"; background-image: radial-gradient(circle at 20% 0%, rgba(14, 165, 217, .08), transparent 30rem); }
+  body { @apply bg-carbon-950 text-white font-sans antialiased; font-feature-settings: "ss01"; background-color: #07110d; background-image: linear-gradient(rgba(7, 17, 13, .72), rgba(7, 17, 13, .86)), url('/images/world_w copy.jfif'); background-position: center top; background-size: cover; background-attachment: fixed; }
   body.theme-light { @apply bg-stone-50 text-carbon-900; }
   body.theme-dark { @apply bg-carbon-950 text-white; }
   ::selection { background: var(--accent-500); color: #fff; }
+  body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(circle at 50% 12%, rgba(213,196,161,.08), transparent 38%), linear-gradient(180deg, rgba(7,17,13,.05), rgba(7,17,13,.28)); }
+  @media (max-width: 640px) { body { background-attachment: scroll; background-position: 58% top; } }
 }
 
 @layer components {
@@ -58,10 +60,10 @@ body.accent-blue {
   .section-sm { @apply py-12 lg:py-16; }
 }
 
-.bg-carbon-950 { background-color: #06111f !important; }
-.bg-carbon-900 { background-color: #0a1a2b !important; }
-.bg-carbon-800 { background-color: #10263a !important; }
-.bg-forest-950 { background-color: #071d2b !important; }
+.bg-carbon-950 { background-color: rgba(6, 17, 31, .92) !important; }
+.bg-carbon-900 { background-color: rgba(10, 26, 43, .94) !important; }
+.bg-carbon-800 { background-color: rgba(16, 38, 58, .96) !important; }
+.bg-forest-950 { background-color: rgba(7, 29, 43, .93) !important; }
 .text-amber-500, .text-amber-400 { color: var(--accent-400) !important; }
 .bg-amber-500 { background-color: var(--accent-500) !important; }
 .ring-amber-500 { --tw-ring-color: var(--accent-500) !important; }
