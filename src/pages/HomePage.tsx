@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { useHashRoute } from '../lib/router';
 import {
-  SERVICE_CATEGORIES, TRUST_CARDS,
+  TRUST_CARDS,
   MARQUEE_PLATFORMS, AGENCY_EMAIL, FOUNDED_YEAR,
   SLIDES, PRICING,
 } from '../lib/data';
@@ -136,33 +136,52 @@ const FEATURED_TEMPLATES = [
   { name: 'Signal Objects', platform: 'Custom build', type: 'Digital storefront', accent: '#d7b86d', background: 'linear-gradient(135deg, #29231d, #101316)', description: 'A focused launch experience that turns product discovery into action.', className: 'template-custom' },
 ] as const;
 
-function PlatformTemplate({ template, index }: { template: typeof FEATURED_TEMPLATES[number]; index: number }) {
+type Device = 'phone' | 'tablet' | 'laptop' | 'desktop';
+
+function StorePreview({ template, device, index }: { template: typeof FEATURED_TEMPLATES[number]; device: Device; index: number }) {
   return (
-    <div className={`template-card ${template.className} group`} style={{ '--template-accent': template.accent } as React.CSSProperties}>
-      <div className="template-browser">
-        <span /><span /><span />
-        <p>{template.platform.toLowerCase()}.shopijavid.com</p>
+    <div className={`store-device store-device-${device} showcase-theme-${index}`} style={{ '--store-accent': template.accent } as React.CSSProperties}>
+      <div className="store-screen">
+        <div className="store-topbar"><b>{template.name}</b><span>Shop &nbsp; Journal &nbsp; About &nbsp; Bag</span></div>
+        {index === 0 && <div className="store-layout store-editorial-layout"><div><small>NEW ARRIVALS / 2026</small><h3>Objects for<br /><em>slower living.</em></h3><button>Explore collection</button></div><div className="store-product-orbit" /></div>}
+        {index === 1 && <div className="store-layout store-fashion-layout"><div className="store-fashion-image" /><div><small>FORM / FUNCTION</small><h3>Made<br /><strong>visible.</strong></h3><button>View the edit</button></div></div>}
+        {index === 2 && <div className="store-layout store-catalog-layout"><div className="store-catalog-copy"><small>EVERYDAY ESSENTIALS</small><h3>Built for<br /><strong>every day.</strong></h3><button>Shop essentials</button></div><div className="store-catalog-grid"><i /><i /><i /><i /></div></div>}
+        {index === 3 && <div className="store-layout store-tech-layout"><div><small>OBJECT 04 / 12</small><h3>Make room<br /><em>for better.</em></h3><button>Discover the drop</button></div><div className="store-tech-product"><span>04</span></div></div>}
       </div>
-      <div className="template-content" style={{ background: template.background }}>
-        <div className="template-nav">
-          <strong>{template.name}</strong>
-          <span>{index === 1 ? 'Studio / Journal / Shop' : index === 2 ? 'Shop  ·  About  ·  Journal' : 'New collection  /  Cart'}</span>
+    </div>
+  );
+}
+
+function CommerceShowcase() {
+  const [current, setCurrent] = useState(0);
+  const [device, setDevice] = useState<Device>('desktop');
+  const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+  const selected = FEATURED_TEMPLATES[current];
+  const devices: Device[] = ['phone', 'tablet', 'laptop', 'desktop'];
+
+  useEffect(() => {
+    if (reduced) return;
+    const timer = window.setInterval(() => setCurrent(value => (value + 1) % FEATURED_TEMPLATES.length), 6500);
+    return () => window.clearInterval(timer);
+  }, [reduced]);
+
+  const move = (direction: number) => setCurrent(value => (value + direction + FEATURED_TEMPLATES.length) % FEATURED_TEMPLATES.length);
+
+  return (
+    <div className="commerce-showcase">
+      <div className="showcase-toolbar">
+        <div className="showcase-devices" role="tablist" aria-label="Preview device">
+          {devices.map(item => <button key={item} onClick={() => setDevice(item)} className={device === item ? 'is-active' : ''} role="tab" aria-selected={device === item}>{item}</button>)}
         </div>
-        {index === 0 && (
-          <div className="template-editorial"><span>Objects for<br />slower living.</span><div className="template-orbit" /></div>
-        )}
-        {index === 1 && (
-          <div className="template-collage"><div className="collage-tile collage-tile-main">MADE<br /><b>VISIBLE</b></div><div className="collage-tile collage-tile-side">BRAND<br />STUDIO</div></div>
-        )}
-        {index === 2 && (
-          <div className="template-catalog"><div className="catalog-hero"><span>Built for<br /><b>everyday.</b></span></div><div className="catalog-row"><span>01 / 04</span><b>Essentials collection</b><span>$128</span></div></div>
-        )}
-        {index === 3 && (
-          <div className="template-launch"><span>THE NEW STANDARD</span><strong>Make room<br />for better.</strong><button>Explore drop</button></div>
-        )}
-        <div className="template-footer"><span>{template.type}</span><i style={{ backgroundColor: template.accent }} /></div>
+        <div className="showcase-controls"><button onClick={() => move(-1)} aria-label="Previous store design"><ChevronLeft size={18} /></button><span>{String(current + 1).padStart(2, '0')} / {String(FEATURED_TEMPLATES.length).padStart(2, '0')}</span><button onClick={() => move(1)} aria-label="Next store design"><ChevronRight size={18} /></button></div>
       </div>
-      <div className="template-caption"><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{template.platform}</h3><p>{template.description}</p></div><ArrowUpRight size={18} /></div>
+      <div className="showcase-viewport">
+        <div className="showcase-track" style={{ transform: `translateX(-${current * 100}%)` }}>
+          {FEATURED_TEMPLATES.map((template, index) => <div className="showcase-slide" key={template.name}><StorePreview template={template} device={device} index={index} /></div>)}
+        </div>
+      </div>
+      <div className="showcase-caption"><div><span className="showcase-index">{String(current + 1).padStart(2, '0')}</span><div><h3>{selected.name}</h3><p>{selected.platform} · {selected.type} — {selected.description}</p></div></div><ArrowUpRight size={20} /></div>
+      <div className="showcase-dots" aria-label="Choose store design">{FEATURED_TEMPLATES.map((template, index) => <button key={template.name} onClick={() => setCurrent(index)} className={index === current ? 'is-active' : ''} aria-label={`Show ${template.name}`} />)}</div>
     </div>
   );
 }
@@ -170,7 +189,6 @@ function PlatformTemplate({ template, index }: { template: typeof FEATURED_TEMPL
 // ─── Main component ──────────────────────────────────────────────────
 export default function HomePage() {
   const { navigate } = useHashRoute();
-  const [serviceFilter, setServiceFilter] = useState('All');
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
@@ -182,11 +200,6 @@ export default function HomePage() {
     const t = setInterval(() => setMarqueeOffset(o => o - 1), 30);
     return () => clearInterval(t);
   }, [reduced]);
-
-  const filterOptions = ['All', ...SERVICE_CATEGORIES.map(c => c.name.split(' ')[0])];
-  const filteredCategories = serviceFilter === 'All'
-    ? SERVICE_CATEGORIES
-    : SERVICE_CATEGORIES.filter(c => c.name.startsWith(serviceFilter));
 
   return (
     <div className="overflow-x-hidden">
@@ -266,65 +279,8 @@ export default function HomePage() {
             <div className="max-w-2xl"><span className="eyebrow">Ecommerce & Store Development</span><h2 className="mt-4 section-title">Four directions.<br /><span className="electric-text">One sharper standard.</span></h2></div>
             <p className="max-w-sm text-sm leading-relaxed text-carbon-300">Shopify, Wix, WooCommerce, and custom commerce — different tools, different personalities, equally intentional.</p>
           </Reveal>
-          <div className="grid gap-5 lg:grid-cols-2">
-            {FEATURED_TEMPLATES.map((template, index) => <Reveal key={template.name} delay={index * 90}><PlatformTemplate template={template} index={index} /></Reveal>)}
-          </div>
+          <CommerceShowcase />
           <Reveal className="mt-10 text-center"><button onClick={() => navigate('/portfolio')} className="btn-primary">See More Projects <ArrowRight size={16} /></button><p className="mt-3 text-xs text-carbon-500">Explore the full portfolio, marketing work, and growth systems</p></Reveal>
-        </div>
-      </section>
-
-      {/* ═══ SERVICES PREVIEW ═══ */}
-      <section className="section bg-carbon-900">
-        <div className="container-page">
-          <Reveal className="mb-10 text-center">
-            <span className="eyebrow">Our Services</span>
-            <h2 className="mt-4 section-title">Everything Your Business Needs</h2>
-            <p className="mx-auto mt-4 max-w-lg text-carbon-400">From ecommerce development to marketing, business services, creative media, and strategy — organized by category.</p>
-          </Reveal>
-
-          <Reveal className="mb-8">
-            <div className="flex flex-wrap justify-center gap-2">
-              {filterOptions.map(f => (
-                <button key={f} onClick={() => setServiceFilter(f)} className={`chip transition ${serviceFilter === f ? 'bg-amber-500 text-white' : 'bg-carbon-900 text-carbon-400 ring-1 ring-white/10 hover:text-white'}`}>{f}</button>
-              ))}
-            </div>
-          </Reveal>
-
-          <div className="space-y-10">
-            {filteredCategories.map((cat, ci) => (
-              <Reveal key={cat.id} delay={ci * 100}>
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/15 text-amber-500"><Icon name={cat.icon} size={20} /></div>
-                      <h3 className="font-serif text-2xl font-semibold text-white">{cat.name}</h3>
-                    </div>
-                    <button onClick={() => navigate('/services')} className="text-xs font-semibold text-amber-500 hover:text-amber-400 flex items-center gap-1 whitespace-nowrap">
-                      Explore All <ArrowRight size={12} />
-                    </button>
-                  </div>
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    {cat.services.slice(0, 4).map((s) => (
-                      <div key={s.name} className="group card-dark p-5 transition-all hover:-translate-y-1 hover:ring-amber-500/20 hover:shadow-lift h-full">
-                        <div className="flex items-start gap-3">
-                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-carbon-800 text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-colors"><Icon name={s.icon} size={16} /></div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-semibold text-white text-sm">{s.name}</h4>
-                            <p className="mt-1 text-xs text-carbon-400 leading-relaxed">{s.desc}</p>
-                          </div>
-                        </div>
-                        <button onClick={() => navigate('/services')} className="mt-3 text-[11px] font-semibold text-amber-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Learn More <ChevronRight size={11} /></button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
-            <button onClick={() => navigate('/services')} className="btn-amber">View All Services <ArrowRight size={16} /></button>
-          </div>
         </div>
       </section>
 
