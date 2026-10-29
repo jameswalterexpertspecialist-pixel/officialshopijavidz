@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import {
-  ArrowRight, ArrowUpRight, TrendingUp, ShoppingBag, Globe, Package, Tag, Box, Store,
+  ArrowRight, TrendingUp, ShoppingBag, Globe, Package, Tag, Box, Store,
   Megaphone, Sparkles, Search, Compass, Briefcase, Palette, Target, Heart,
   Check, Users, DollarSign, ShoppingCart, BarChart3, ChevronRight, Award,
   ClipboardCheck, Hammer, Smartphone, CreditCard, FileText, Mail,
@@ -15,6 +15,7 @@ import {
   SLIDES, PRICING,
 } from '../lib/data';
 import InteractiveGlobe from '../components/InteractiveGlobe';
+import CommerceShowcase from '../components/CommerceShowcase';
 
 // ─── Icon resolver ───────────────────────────────────────────────────
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -125,63 +126,6 @@ function Slideshow() {
           />
         ))}
       </div>
-    </div>
-  );
-}
-
-const FEATURED_TEMPLATES = [
-  { name: 'Atelier No. 7', platform: 'Shopify', type: 'Premium commerce', accent: '#63e6be', background: 'linear-gradient(135deg, #132c2a, #071b20)', description: 'Editorial product storytelling for a considered lifestyle brand.', className: 'template-shopify' },
-  { name: 'Casa Forma', platform: 'Wix', type: 'Creative studio', accent: '#ff8a65', background: 'linear-gradient(135deg, #351d2e, #101b35)', description: 'Expressive layouts and bold visual direction built around the brand.', className: 'template-wix' },
-  { name: 'Northline Supply', platform: 'WooCommerce', type: 'Conversion system', accent: '#4aa8ff', background: 'linear-gradient(135deg, #13243e, #091321)', description: 'Structured merchandising and clear buying paths for a growing catalog.', className: 'template-woocommerce' },
-  { name: 'Signal Objects', platform: 'Custom build', type: 'Digital storefront', accent: '#d7b86d', background: 'linear-gradient(135deg, #29231d, #101316)', description: 'A focused launch experience that turns product discovery into action.', className: 'template-custom' },
-] as const;
-
-type Device = 'phone' | 'tablet' | 'laptop' | 'desktop';
-
-function StorePreview({ template, device, index }: { template: typeof FEATURED_TEMPLATES[number]; device: Device; index: number }) {
-  return (
-    <div className={`store-device store-device-${device} showcase-theme-${index}`} style={{ '--store-accent': template.accent } as React.CSSProperties}>
-      <div className="store-screen">
-        <div className="store-topbar"><b>{template.name}</b><span>Shop &nbsp; Journal &nbsp; About &nbsp; Bag</span></div>
-        {index === 0 && <div className="store-layout store-editorial-layout"><div><small>NEW ARRIVALS / 2026</small><h3>Objects for<br /><em>slower living.</em></h3><button>Explore collection</button></div><div className="store-product-orbit" /></div>}
-        {index === 1 && <div className="store-layout store-fashion-layout"><div className="store-fashion-image" /><div><small>FORM / FUNCTION</small><h3>Made<br /><strong>visible.</strong></h3><button>View the edit</button></div></div>}
-        {index === 2 && <div className="store-layout store-catalog-layout"><div className="store-catalog-copy"><small>EVERYDAY ESSENTIALS</small><h3>Built for<br /><strong>every day.</strong></h3><button>Shop essentials</button></div><div className="store-catalog-grid"><i /><i /><i /><i /></div></div>}
-        {index === 3 && <div className="store-layout store-tech-layout"><div><small>OBJECT 04 / 12</small><h3>Make room<br /><em>for better.</em></h3><button>Discover the drop</button></div><div className="store-tech-product"><span>04</span></div></div>}
-      </div>
-    </div>
-  );
-}
-
-function CommerceShowcase() {
-  const [current, setCurrent] = useState(0);
-  const [device, setDevice] = useState<Device>('desktop');
-  const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-  const selected = FEATURED_TEMPLATES[current];
-  const devices: Device[] = ['phone', 'tablet', 'laptop', 'desktop'];
-
-  useEffect(() => {
-    if (reduced) return;
-    const timer = window.setInterval(() => setCurrent(value => (value + 1) % FEATURED_TEMPLATES.length), 6500);
-    return () => window.clearInterval(timer);
-  }, [reduced]);
-
-  const move = (direction: number) => setCurrent(value => (value + direction + FEATURED_TEMPLATES.length) % FEATURED_TEMPLATES.length);
-
-  return (
-    <div className="commerce-showcase">
-      <div className="showcase-toolbar">
-        <div className="showcase-devices" role="tablist" aria-label="Preview device">
-          {devices.map(item => <button key={item} onClick={() => setDevice(item)} className={device === item ? 'is-active' : ''} role="tab" aria-selected={device === item}>{item}</button>)}
-        </div>
-        <div className="showcase-controls"><button onClick={() => move(-1)} aria-label="Previous store design"><ChevronLeft size={18} /></button><span>{String(current + 1).padStart(2, '0')} / {String(FEATURED_TEMPLATES.length).padStart(2, '0')}</span><button onClick={() => move(1)} aria-label="Next store design"><ChevronRight size={18} /></button></div>
-      </div>
-      <div className="showcase-viewport">
-        <div className="showcase-track" style={{ transform: `translateX(-${current * 100}%)` }}>
-          {FEATURED_TEMPLATES.map((template, index) => <div className="showcase-slide" key={template.name}><StorePreview template={template} device={device} index={index} /></div>)}
-        </div>
-      </div>
-      <div className="showcase-caption"><div><span className="showcase-index">{String(current + 1).padStart(2, '0')}</span><div><h3>{selected.name}</h3><p>{selected.platform} · {selected.type} — {selected.description}</p></div></div><ArrowUpRight size={20} /></div>
-      <div className="showcase-dots" aria-label="Choose store design">{FEATURED_TEMPLATES.map((template, index) => <button key={template.name} onClick={() => setCurrent(index)} className={index === current ? 'is-active' : ''} aria-label={`Show ${template.name}`} />)}</div>
     </div>
   );
 }

@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Store, Check, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 import { useHashRoute } from '../lib/router';
 import { PLATFORMS, MARQUEE_PLATFORMS } from '../lib/data';
-import InteractiveStore from '../components/InteractiveStore';
+import CommerceShowcase from '../components/CommerceShowcase';
 import AnalyticsDashboard from '../components/AnalyticsDashboard';
-
-const PLATFORM_TABS = ['shopify', 'wix', 'woocommerce', 'etsy', 'amazon'] as const;
 
 function Reveal({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -39,9 +37,6 @@ export default function PlatformsPage() {
     const t = setInterval(() => setMarqueeOffset(o => o - 1), 30);
     return () => clearInterval(t);
   }, [reduced]);
-
-  const activePlatform = PLATFORMS.find(p => p.id === activeTab) || PLATFORMS[0];
-  const isMarketplace = activeTab === 'etsy' || activeTab === 'amazon';
 
   return (
     <div className="pt-20">
@@ -94,55 +89,15 @@ export default function PlatformsPage() {
         </div>
       </section>
 
-      {/* Interactive store demos */}
+      {/* Shared ecommerce design showcase */}
       <section className="section bg-carbon-950" id="store-demo">
         <div className="container-page">
           <Reveal className="mb-8 text-center">
-            <span className="eyebrow">Live Store Demonstrations</span>
-            <h2 className="mt-4 section-title">See What We Build</h2>
-            <p className="mx-auto mt-4 max-w-lg text-carbon-400">These are fully interactive storefront demonstrations. Browse products, add to cart, view details, and experience the store as your customers would.</p>
+            <span className="eyebrow">E-commerce Design Showcase</span>
+            <h2 className="mt-4 section-title">Real stores. Real directions.</h2>
+            <p className="mx-auto mt-4 max-w-xl text-carbon-400">Explore the same responsive store gallery featured on the homepage. Each direction is designed for a different category, platform, and customer journey.</p>
           </Reveal>
-
-          {/* Platform tabs */}
-          <Reveal className="mb-6">
-            <div className="flex flex-wrap justify-center gap-2">
-              {PLATFORM_TABS.map(tab => {
-                const p = PLATFORMS.find(pl => pl.id === tab)!;
-                return (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${activeTab === tab ? 'text-white shadow-lg' : 'bg-carbon-900 text-carbon-400 ring-1 ring-white/10 hover:text-white'}`}
-                    style={activeTab === tab ? { background: p.color } : {}}
-                  >
-                    {p.name}
-                  </button>
-                );
-              })}
-            </div>
-          </Reveal>
-
-          {/* Platform description */}
-          <Reveal className="mb-6">
-            <div className="max-w-2xl mx-auto text-center">
-              <p className="text-sm text-carbon-400">{activePlatform.desc}</p>
-              <div className="mt-3 flex flex-wrap justify-center gap-1.5">
-                {activePlatform.services.map(s => (
-                  <span key={s} className="chip text-[10px] bg-carbon-900 text-carbon-300 ring-1 ring-white/10">{s}</span>
-                ))}
-              </div>
-              {isMarketplace && (
-                <p className="mt-3 text-[11px] text-amber-500/70 italic">Marketplace Experience Demonstration — not an official platform interface</p>
-              )}
-            </div>
-          </Reveal>
-
-          {/* Interactive store */}
-          <Reveal>
-            <div key={activeTab}>
-              <InteractiveStore platform={activeTab} />
-            </div>
-          </Reveal>
+          <Reveal><CommerceShowcase /></Reveal>
         </div>
       </section>
 
