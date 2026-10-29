@@ -16,7 +16,7 @@ export default function FloatingButtons() {
       {show && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-carbon-800 text-white ring-1 ring-white/15 shadow-card transition hover:bg-amber-500 hover:text-carbon-950 animate-fade-in"
+          className="flex h-11 w-11 items-center justify-center rounded-full bg-carbon-800 text-white ring-1 ring-white/15 shadow-card transition hover:bg-accent-500 hover:text-white animate-fade-in"
         >
           <ArrowUp size={20} />
         </button>

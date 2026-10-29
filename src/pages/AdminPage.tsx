@@ -212,7 +212,7 @@ export default function AdminPage() {
       <div className="min-h-screen bg-carbon-950 flex items-center justify-center px-4">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
-            <img src="/images/WhatsApp_Image_2026-05-18_at_11.45.20_AM.jpeg" alt="" className="h-16 w-16 rounded-full mx-auto ring-2 ring-amber-500/40" />
+            <img src="/images/shopi.jpeg" alt="" className="h-16 w-16 rounded-full mx-auto ring-2 ring-white/20" />
             <h1 className="mt-4 font-serif text-2xl font-semibold text-white tracking-widest">SHOPIJAVID</h1>
             <p className="text-sm text-amber-500 tracking-widest">ADMIN DASHBOARD</p>
           </div>
@@ -246,7 +246,7 @@ export default function AdminPage() {
       {/* Top bar */}
       <div className="border-b border-white/10 bg-carbon-900 px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img src="/images/WhatsApp_Image_2026-05-18_at_11.45.20_AM.jpeg" alt="" className="h-9 w-9 rounded-full ring-1 ring-amber-500/40" />
+          <img src="/images/shopi.jpeg" alt="" className="h-9 w-9 rounded-full ring-1 ring-white/20" />
           <div>
             <p className="font-serif text-sm font-semibold text-white tracking-widest">SHOPIJAVID</p>
             <p className="text-xs text-amber-500">Support Dashboard</p>
