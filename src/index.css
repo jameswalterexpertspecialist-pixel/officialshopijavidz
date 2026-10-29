@@ -29,7 +29,7 @@ body.accent-blue {
 
 @layer base {
   html { scroll-behavior: smooth; }
-  body { @apply bg-carbon-950 text-white font-sans antialiased; font-feature-settings: "ss01"; background-color: #07110d; background-image: linear-gradient(rgba(7, 17, 13, .72), rgba(7, 17, 13, .86)), url('/images/world_w copy.jfif'); background-position: center top; background-size: cover; background-attachment: fixed; }
+  body { @apply bg-carbon-950 text-white font-sans antialiased; font-feature-settings: "ss01"; background-color: #07110d; background-image: linear-gradient(rgba(7, 17, 13, .72), rgba(7, 17, 13, .86)), url('/images/world_w copy 2.jfif'); background-position: center top; background-size: cover; background-attachment: fixed; }
   body.theme-light { @apply bg-stone-50 text-carbon-900; }
   body.theme-dark { @apply bg-carbon-950 text-white; }
   ::selection { background: var(--accent-500); color: #fff; }
@@ -72,6 +72,7 @@ body.accent-blue {
 .bg-amber-500\/20 { background-color: color-mix(in srgb, var(--accent-500) 20%, transparent) !important; }
 .text-forest-400 { color: #65d6df !important; }
 
+.hero-hills { background-image: linear-gradient(90deg, rgba(7,17,13,.96) 0%, rgba(7,17,13,.72) 48%, rgba(7,17,13,.28) 100%), url('/images/world_w copy 2.jfif'); background-position: center; background-size: cover; }
 .film-section, .showcase-section { background: linear-gradient(180deg, #081a2b, #06111f); }
 .film-frame { position: relative; height: clamp(360px, 52vw, 620px); overflow: hidden; border-radius: 28px; border: 1px solid rgba(132, 220, 255, .28); box-shadow: 0 30px 100px -32px rgba(0, 196, 255, .4); isolation: isolate; }
 .film-frame video { transform: scale(1.04); filter: saturate(1.1) contrast(1.06); animation: film-drift 16s ease-in-out infinite alternate; }

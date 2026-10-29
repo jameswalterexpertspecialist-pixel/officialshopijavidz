@@ -191,7 +191,7 @@ export default function HomePage() {
   return (
     <div className="overflow-x-hidden">
       {/* ═══ HERO SECTION ═══ */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-carbon-950">
+      <section className="hero-hills relative min-h-screen flex items-center pt-20 overflow-hidden bg-carbon-950">
         <div className="absolute inset-0 grid-bg opacity-20" />
         <div className="absolute left-1/2 top-0 -translate-x-1/2 h-px w-3/4 bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
         <div className="absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-forest-600/10 blur-3xl" />

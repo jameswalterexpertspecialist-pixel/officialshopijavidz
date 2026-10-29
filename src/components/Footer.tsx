@@ -48,7 +48,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h4 className="text-xs font-semibold uppercase tracking-widest text-amber-500">Navigation</h4>
             <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-xs lg:grid-cols-1">
-              {[['Home','/'],['Services','/services'],['Platforms','/platforms'],['Pricing','/pricing'],['Gigs','/gigs'],['Growth','/growth'],['Portfolio','/portfolio'],['Team','/team'],['Blog','/blog'],['Contact','/contact']].map(([l,t]) => (
+              {[['Home','/'],['Services','/services'],['Platforms','/platforms'],['Pricing','/pricing'],['Gigs','/gigs'],['Portfolio','/portfolio'],['Team','/team'],['Blog','/blog'],['Contact','/contact']].map(([l,t]) => (
                 <li key={t}><button onClick={() => navigate(t)} className="text-neutral-400 hover:text-white transition">{l}</button></li>
               ))}
             </ul>
